@@ -1,0 +1,547 @@
+{
+ "h1": [
+  {
+   "x": 184,
+   "y": 95,
+   "w": 1072,
+   "h": 79.19,
+   "text": "RiskProfiler"
+  }
+ ],
+ "headerTag": [
+  {
+   "x": 184,
+   "y": 61,
+   "w": 205,
+   "h": 16,
+   "text": "INSURANCE · RISK PROFILER"
+  }
+ ],
+ "headerSub": [
+  {
+   "x": 184,
+   "y": 196.19,
+   "w": 636,
+   "h": 40.78,
+   "text": "Evaluate insurance claim fraud risk using machine learning and explainable AI. R"
+  }
+ ],
+ "form": [
+  {
+   "x": 184,
+   "y": 288.97,
+   "w": 632,
+   "h": 815.56,
+   "text": "DRIVER PROFILE\nDriver Profile captures baseline claimant characteristics that in"
+  }
+ ],
+ "result": [
+  {
+   "x": 836,
+   "y": 288.97,
+   "w": 420,
+   "h": 815.56,
+   "text": "RISK ASSESSMENT\nRisk Assessment shows the model's fraud probability for the curr"
+  }
+ ],
+ "runBtn": [
+  {
+   "x": 217,
+   "y": 863.92,
+   "w": 566,
+   "h": 47.19,
+   "text": "RE-RUN EVALUATION"
+  }
+ ],
+ "reset": [
+  {
+   "x": 217,
+   "y": 923.11,
+   "w": 108.81,
+   "h": 16,
+   "text": "Reset to defaults"
+  }
+ ],
+ "status": [
+  {
+   "x": 217,
+   "y": 949.11,
+   "w": 566,
+   "h": 16,
+   "text": "Current values already match the latest result."
+  }
+ ],
+ "gauge": [
+  {
+   "x": 946,
+   "y": 367.97,
+   "w": 200,
+   "h": 200,
+   "text": "82%\nFRAUD LIKELY"
+  }
+ ],
+ "gaugePct": [
+  {
+   "x": 998.98,
+   "y": 433.17,
+   "w": 94.02,
+   "h": 51.2,
+   "text": "82%"
+  }
+ ],
+ "gaugeTier": [
+  {
+   "x": 1001.72,
+   "y": 488.38,
+   "w": 88.56,
+   "h": 14.39,
+   "text": "FRAUD LIKELY"
+  }
+ ],
+ "gaugeMeta": [
+  {
+   "x": 869,
+   "y": 583.97,
+   "w": 354,
+   "h": 16,
+   "text": "THRESHOLD 65%\n17.0% ABOVE THRESHOLD"
+  }
+ ],
+ "effects": [
+  {
+   "x": 869,
+   "y": 599.97,
+   "w": 354,
+   "h": 471.56,
+   "text": "FEATURE EFFECTS\nBaseline is the model's starting risk for a typical profile. Eac"
+  }
+ ],
+ "summary": [
+  {
+   "x": 184,
+   "y": 1124.53,
+   "w": 1072,
+   "h": 358.56,
+   "text": "EXECUTIVE SUMMARY\nA structured summary of the claim's risk profile, key risk dri"
+  }
+ ],
+ "wfRows": [
+  {
+   "x": 869,
+   "y": 663.97,
+   "w": 354,
+   "h": 59.59,
+   "text": "Past number of claims\n+19.8%\nvalue 4"
+  },
+  {
+   "x": 869,
+   "y": 733.56,
+   "w": 354,
+   "h": 59.59,
+   "text": "Age of driver\n+10.5%\nvalue 45"
+  },
+  {
+   "x": 869,
+   "y": 803.16,
+   "w": 354,
+   "h": 59.59,
+   "text": "High education\n+8.8%\nvalue Yes"
+  },
+  {
+   "x": 869,
+   "y": 872.75,
+   "w": 354,
+   "h": 59.59,
+   "text": "Annual income\n+5.6%\nvalue 38000"
+  },
+  {
+   "x": 869,
+   "y": 942.34,
+   "w": 354,
+   "h": 59.59,
+   "text": "Gender\n-4.2%\nvalue M"
+  },
+  {
+   "x": 869,
+   "y": 1011.94,
+   "w": 354,
+   "h": 59.59,
+   "text": "Safety rating\n-4.2%\nvalue 75"
+  }
+ ],
+ "sections": [
+  {
+   "x": 217,
+   "y": 321.97,
+   "w": 566,
+   "h": 180.78,
+   "text": "DRIVER PROFILE\nDriver Profile captures baseline claimant characteristics that in"
+  },
+  {
+   "x": 217,
+   "y": 526.75,
+   "w": 566,
+   "h": 180.78,
+   "text": "CLAIM CONTEXT\nClaim Context includes timing and payout-related factors tied to c"
+  },
+  {
+   "x": 217,
+   "y": 731.53,
+   "w": 566,
+   "h": 100.39,
+   "text": "RISK HISTORY\nRisk History summarizes prior behavior and historical signals used "
+  }
+ ],
+ "fields": [
+  {
+   "x": 217,
+   "y": 355.97,
+   "w": 276,
+   "h": 66.39,
+   "text": "AGE OF DRIVER"
+  },
+  {
+   "x": 507,
+   "y": 355.97,
+   "w": 276,
+   "h": 66.39,
+   "text": "DRIVER GENDER\nFemale\nMale"
+  },
+  {
+   "x": 217,
+   "y": 436.36,
+   "w": 276,
+   "h": 66.39,
+   "text": "LIVING STATUS\nOwn\nRent"
+  },
+  {
+   "x": 507,
+   "y": 436.36,
+   "w": 276,
+   "h": 66.39,
+   "text": "HIGHER EDUCATION\nYes"
+  },
+  {
+   "x": 217,
+   "y": 560.75,
+   "w": 276,
+   "h": 66.39,
+   "text": "CLAIM DAY OF WEEK\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "x": 507,
+   "y": 560.75,
+   "w": 276,
+   "h": 66.39,
+   "text": "CLAIM ESTIMATED PAYOUT"
+  },
+  {
+   "x": 217,
+   "y": 641.14,
+   "w": 276,
+   "h": 66.39,
+   "text": "ANNUAL INCOME"
+  },
+  {
+   "x": 507,
+   "y": 641.14,
+   "w": 276,
+   "h": 66.39,
+   "text": "WITNESS PRESENT\nNo"
+  },
+  {
+   "x": 217,
+   "y": 765.53,
+   "w": 276,
+   "h": 66.39,
+   "text": "PAST CLAIMS"
+  },
+  {
+   "x": 507,
+   "y": 765.53,
+   "w": 276,
+   "h": 66.39,
+   "text": "SAFETY RATING"
+  }
+ ],
+ "selects": [
+  {
+   "x": 507,
+   "y": 377.97,
+   "w": 276,
+   "h": 44.39,
+   "text": "Female\nMale"
+  },
+  {
+   "x": 217,
+   "y": 458.36,
+   "w": 276,
+   "h": 44.39,
+   "text": "Own\nRent"
+  },
+  {
+   "x": 217,
+   "y": 582.75,
+   "w": 276,
+   "h": 44.39,
+   "text": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  }
+ ],
+ "inputs": [
+  {
+   "x": 217,
+   "y": 377.97,
+   "w": 276,
+   "h": 44.39,
+   "text": "45"
+  },
+  {
+   "x": 521,
+   "y": 480.05,
+   "w": 1,
+   "h": 1,
+   "text": "on"
+  },
+  {
+   "x": 507,
+   "y": 582.75,
+   "w": 276,
+   "h": 44.39,
+   "text": "5000"
+  },
+  {
+   "x": 217,
+   "y": 663.14,
+   "w": 276,
+   "h": 44.39,
+   "text": "38000"
+  },
+  {
+   "x": 521,
+   "y": 684.83,
+   "w": 1,
+   "h": 1,
+   "text": "on"
+  },
+  {
+   "x": 217,
+   "y": 787.53,
+   "w": 276,
+   "h": 44.39,
+   "text": "4"
+  },
+  {
+   "x": 507,
+   "y": 787.53,
+   "w": 276,
+   "h": 44.39,
+   "text": "75"
+  }
+ ],
+ "summaryText": [
+  {
+   "x": 217,
+   "y": 1216.92,
+   "w": 1006,
+   "h": 61.17,
+   "text": "The claim assessment indicates a high fraud probability risk score of 81.7%, res"
+  }
+ ],
+ "summaryHead": [
+  {
+   "x": 217,
+   "y": 1189.92,
+   "w": 1006,
+   "h": 21,
+   "text": "Top local driver: Past number of claims"
+  }
+ ],
+ "groups": [
+  {
+   "x": 217,
+   "y": 1298.09,
+   "w": 324.66,
+   "h": 156,
+   "text": "RISK DRIVERS\nPast number of claims (4): +19.76% impact\nAge of driver (45): +10.4"
+  },
+  {
+   "x": 557.66,
+   "y": 1298.09,
+   "w": 324.67,
+   "h": 156,
+   "text": "PROTECTIVE SIGNALS\nGender (M): -4.23% impact\nSafety rating (75): -4.19% impact\nC"
+  },
+  {
+   "x": 898.33,
+   "y": 1298.09,
+   "w": 324.66,
+   "h": 156,
+   "text": "TOP 3 OVERALL\nPast number of claims (4): +19.76% impact\nAge of driver (45): +10."
+  }
+ ],
+ "source": [
+  {
+   "x": 1166.11,
+   "y": 1153.53,
+   "w": 56.89,
+   "h": 22.39,
+   "text": "OPENAI"
+  }
+ ],
+ "fieldsByLabel": [
+  {
+   "label": "AGE OF DRIVER",
+   "ctrl": {
+    "x": 217,
+    "y": 377.97,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 355.97,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "DRIVER GENDER",
+   "ctrl": {
+    "x": 507,
+    "y": 377.97,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 355.97,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "LIVING STATUS",
+   "ctrl": {
+    "x": 217,
+    "y": 458.36,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 436.36,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "HIGHER EDUCATION",
+   "ctrl": {
+    "x": 507,
+    "y": 458.36,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 436.36,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "CLAIM DAY OF WEEK",
+   "ctrl": {
+    "x": 217,
+    "y": 582.75,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 560.75,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "CLAIM ESTIMATED PAYOUT",
+   "ctrl": {
+    "x": 507,
+    "y": 582.75,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 560.75,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "ANNUAL INCOME",
+   "ctrl": {
+    "x": 217,
+    "y": 663.14,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 641.14,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "WITNESS PRESENT",
+   "ctrl": {
+    "x": 507,
+    "y": 663.14,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 641.14,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "PAST CLAIMS",
+   "ctrl": {
+    "x": 217,
+    "y": 787.53,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 765.53,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "SAFETY RATING",
+   "ctrl": {
+    "x": 507,
+    "y": 787.53,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 765.53,
+    "w": 276,
+    "h": 66.39
+   }
+  }
+ ],
+ "doc": {
+  "w": 1440,
+  "h": 1579
+ }
+}

@@ -1,0 +1,41 @@
+<template>
+<style>
+  @font-face { font-family: "DM Serif Display"; font-weight: 400; font-display: block; src: url("assets/fonts/dmserifdisplay-400-latin.woff2") format("woff2"); }
+  #root { position: absolute; inset: 0; overflow: hidden; }
+
+  #cdrives-sheet { position: absolute; inset: 0; background: #f8f9fb; }
+  #cdrives-line { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #cdrives-text { position: relative; isolation: isolate; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 120px; line-height: 1.04;
+    letter-spacing: -0.01em; color: #0f1419; white-space: nowrap; text-align: center; }
+  #cdrives-text .w { display: inline-block; color: #dfe3e8; }
+  #cdrives-acc { position: relative; display: inline-block; white-space: nowrap; }
+  #cdrives-mark { position: absolute; left: -0.08em; right: -0.08em; bottom: 0.1em; height: 0.3em; border-radius: 0.06em;
+    background: #f08526; opacity: 0.32; transform-origin: left center; z-index: -1; }
+</style>
+<div id="root" data-composition-id="card-drives" data-width="1920" data-height="1080">
+  <div id="cdrives-stage" class="clip" data-start="0" data-duration="2.4" data-layout-allow-overflow>
+    <div id="cdrives-sheet"><div id="cdrives-line"><div id="cdrives-text" data-layout-allow-overlap><span class="w" id="cdrives-w0" style="margin-right: 0.25em">See</span><span class="w" id="cdrives-w1" style="margin-right: 0.25em">what</span><span id="cdrives-acc" style="margin-right: 0.25em"><span id="cdrives-mark"></span><span class="w" id="cdrives-w2">drives</span></span><span class="w" id="cdrives-w3" style="margin-right: 0.25em">the</span><span class="w" id="cdrives-w4">score</span></div></div></div>
+  </div>
+</div>
+<script>
+(function () {
+  gsap.config({ force3D: false });
+  const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
+  gsap.set("#cdrives-sheet", { x: 2050 });
+
+  tl.fromTo("#cdrives-sheet", { x: 2050, filter: "blur(12px)" }, { x: 0, duration: 0.45, ease: "power3.inOut" }, 0);
+  tl.to("#cdrives-sheet", { filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0 + 0.25);
+  tl.set("#cdrives-sheet", { filter: "none" }, 0 + 0.46);
+  gsap.set("#cdrives-mark", { scaleX: 0 });
+  const ids = ["#cdrives-w0","#cdrives-w1","#cdrives-w2","#cdrives-w3","#cdrives-w4"], acc = [2];
+  ids.forEach((s, i) => {
+    const on = acc.includes(i);
+    tl.fromTo(s, { color: "#dfe3e8", y: on ? 10 : 0 }, { color: on ? "#15436d" : "#0f1419", y: 0, duration: on ? 0.3 : 0.2, ease: on ? "back.out(2)" : "power1.out" }, 0 + 0.4 + i * 0.09);
+  });
+  tl.to("#cdrives-mark", { scaleX: 1, duration: 0.42, ease: "power2.inOut" }, 0 + 0.4 + acc[acc.length - 1] * 0.09 + 0.16);
+  tl.to("#cdrives-sheet", { x: -2050, duration: 0.45, ease: "power3.inOut" }, 0 + 2.4 - 0.45);
+  tl.to("#cdrives-sheet", { filter: "blur(12px)", duration: 0.22, ease: "power2.in" }, 0 + 2.4 - 0.45);
+  window.__timelines["card-drives"] = tl;
+})();
+</script>
+</template>

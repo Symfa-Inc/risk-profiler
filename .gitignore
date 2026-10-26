@@ -208,3 +208,6 @@ __marimo__/
 
 # Autogluon
 backend/models/AutogluonModels/
+
+# HyperFrames local state
+.hyperframes/

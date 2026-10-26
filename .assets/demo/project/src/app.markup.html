@@ -1,0 +1,94 @@
+<!-- RiskProfiler page, rebuilt from the live DOM (assets/data/live/*.png, captured from the running app).
+     Class names, copy and structure are the app's own; ids and the stacked state layers are added so every
+     state change is a tween. {{...}} placeholders are filled by tools/build.mjs. -->
+<main class="page-shell" id="rp-main">
+  <header class="site-header">
+    <span class="header-tag">Insurance · Risk Profiler</span>
+    <h1>RiskProfiler</h1>
+    <p class="header-sub">Evaluate insurance claim fraud risk using machine learning and explainable AI. Review feature-level insights to understand what drives the predicted fraud probability.</p>
+  </header>
+
+  <div class="content-grid" id="rp-grid">
+    <form class="form-panel" id="rp-form">
+      <div class="form-section">
+        <div class="section-label"><span class="section-label-main">Driver Profile<button type="button" class="effects-info" aria-label="About Driver Profile">{{INFO}}<span class="effects-tooltip">Driver Profile captures baseline claimant characteristics that influence fraud propensity.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field"><span class="field-label">Age of driver</span><input type="number" value="45" readonly></label>
+          <label class="field"><span class="field-label">Driver gender</span><select><option value="M" selected>Male</option></select></label>
+          <label class="field"><span class="field-label">Living status</span><select><option value="Own" selected>Own</option></select></label>
+          <div class="field toggle-field"><span class="field-label">Higher education</span><label class="toggle-label toggle-label--grid"><input class="sr-only" type="checkbox" checked><span class="toggle-dot"></span>Yes</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-label" id="rp-sec-claim"><span class="section-label-main">Claim Context<button type="button" class="effects-info" aria-label="About Claim Context">{{INFO}}<span class="effects-tooltip">Claim Context includes timing and payout-related factors tied to claim plausibility.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field rp-day-field"><span class="field-label">Claim day of week</span>
+            <span class="rp-ctl" id="rp-day">
+              <select id="rp-day-mon"><option value="Monday" selected>Monday</option></select>
+              <select id="rp-day-fri" class="rp-over"><option value="Friday" selected>Friday</option></select>
+              <span class="rp-ring" id="rp-day-hover"></span>
+              <span class="rp-ring rp-ring--focus" id="rp-day-focus"></span>
+              <span class="rp-menu" id="rp-menu" role="listbox">
+                <span class="rp-hl" id="rp-menu-hl"></span>
+                <span class="rp-opt is-current" id="rp-opt-0">Monday<svg class="rp-check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="rp-opt" id="rp-opt-1">Tuesday</span>
+                <span class="rp-opt" id="rp-opt-2">Wednesday</span>
+                <span class="rp-opt" id="rp-opt-3">Thursday</span>
+                <span class="rp-opt" id="rp-opt-4">Friday</span>
+                <span class="rp-opt" id="rp-opt-5">Saturday</span>
+                <span class="rp-opt" id="rp-opt-6">Sunday</span>
+              </span>
+            </span>
+          </label>
+          <label class="field"><span class="field-label">Claim estimated payout</span><input type="number" value="5000" readonly></label>
+          <label class="field"><span class="field-label">Annual income</span><input type="number" value="38000" readonly></label>
+          <div class="field toggle-field"><span class="field-label">Witness present</span><label class="toggle-label toggle-label--grid"><input class="sr-only" type="checkbox"><span class="toggle-dot"></span>No</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-label"><span class="section-label-main">Risk History<button type="button" class="effects-info" aria-label="About Risk History">{{INFO}}<span class="effects-tooltip">Risk History summarizes prior behavior and historical signals used by the model.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field"><span class="field-label">Past claims</span>
+            <span class="rp-ctl" id="rp-past">
+              <input type="number" value="" readonly id="rp-past-input">
+              <span class="rp-val" id="rp-past-0">0</span>
+              <span class="rp-sel" id="rp-past-sel"></span>
+              <span class="rp-val" id="rp-past-4">4</span>
+              <span class="rp-caret" id="rp-past-caret"></span>
+              <span class="rp-ring" id="rp-past-hover"></span>
+              <span class="rp-ring rp-ring--focus" id="rp-past-focus"></span>
+            </span>
+          </label>
+          <label class="field" id="rp-safety"><span class="field-label">Safety rating</span><input type="number" value="75" readonly></label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="run-btn" type="button" id="rp-run">
+          <span class="rp-lbl" id="rp-lbl-run">Run Evaluation</span>
+          <span class="rp-lbl rp-over" id="rp-lbl-eval"><span class="spinner" id="rp-spin"></span>Evaluating<span class="elapsed-time" id="rp-elapsed">0.0s</span></span>
+          <span class="rp-lbl rp-over" id="rp-lbl-rerun">Re-run Evaluation</span>
+        </button>
+        <div class="form-footer">
+          <button type="button" class="reset-link">Reset to defaults</button>
+          <span class="shortcut-hint">⌘/Ctrl + Enter</span>
+        </div>
+        <p class="form-status rp-stack"><span id="rp-status-ready">Input changes are ready to score.</span><span class="rp-over" id="rp-status-match">Current values already match the latest result.</span></p>
+      </div>
+    </form>
+
+    <div class="result-panel" id="rp-result" aria-live="polite">
+      <div class="result-heading">
+        <span class="result-heading-main">Risk Assessment<button type="button" class="effects-info" aria-label="About Risk Assessment">{{INFO}}<span class="effects-tooltip">Risk Assessment shows the model's fraud probability for the current claim profile. Scores above the threshold indicate likely fraud.</span></button></span>
+      </div>
+      <div class="rp-result-stack" id="rp-result-stack">
+        <div class="rp-res" id="rp-resA">{{RESULT_A}}</div>
+        <div class="rp-res" id="rp-resB">{{RESULT_B}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rp-summary-wrap">{{SUMMARY_B}}</div>
+</main>
