@@ -53,5 +53,6 @@ exclude: |
       ^backend/models/|
       ^backend/data/|
       ^frontend/node_modules/|
+      ^frontend/pnpm-lock\.yaml$|
       ^full-stack-fastapi-template/
   )
