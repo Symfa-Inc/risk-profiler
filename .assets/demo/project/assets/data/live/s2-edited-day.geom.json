@@ -1,0 +1,410 @@
+{
+ "h1": [
+  {
+   "x": 184,
+   "y": 95,
+   "w": 1072,
+   "h": 79.19,
+   "text": "RiskProfiler"
+  }
+ ],
+ "headerTag": [
+  {
+   "x": 184,
+   "y": 61,
+   "w": 205,
+   "h": 16,
+   "text": "INSURANCE · RISK PROFILER"
+  }
+ ],
+ "headerSub": [
+  {
+   "x": 184,
+   "y": 196.19,
+   "w": 636,
+   "h": 40.78,
+   "text": "Evaluate insurance claim fraud risk using machine learning and explainable AI. R"
+  }
+ ],
+ "form": [
+  {
+   "x": 184,
+   "y": 288.97,
+   "w": 632,
+   "h": 709.14,
+   "text": "DRIVER PROFILE\nDriver Profile captures baseline claimant characteristics that in"
+  }
+ ],
+ "result": [
+  {
+   "x": 836,
+   "y": 288.97,
+   "w": 420,
+   "h": 709.14,
+   "text": "RISK ASSESSMENT\nRisk Assessment shows the model's fraud probability for the curr"
+  }
+ ],
+ "runBtn": [
+  {
+   "x": 217,
+   "y": 862.92,
+   "w": 566,
+   "h": 47.19,
+   "text": "RUN EVALUATION"
+  }
+ ],
+ "reset": [
+  {
+   "x": 217,
+   "y": 923.11,
+   "w": 108.81,
+   "h": 16,
+   "text": "Reset to defaults"
+  }
+ ],
+ "status": [
+  {
+   "x": 217,
+   "y": 949.11,
+   "w": 566,
+   "h": 16,
+   "text": "Input changes are ready to score."
+  }
+ ],
+ "gauge": [],
+ "gaugePct": [],
+ "gaugeTier": [],
+ "gaugeMeta": [],
+ "effects": [],
+ "summary": [],
+ "wfRows": [],
+ "sections": [
+  {
+   "x": 217,
+   "y": 321.97,
+   "w": 566,
+   "h": 180.78,
+   "text": "DRIVER PROFILE\nDriver Profile captures baseline claimant characteristics that in"
+  },
+  {
+   "x": 217,
+   "y": 526.75,
+   "w": 566,
+   "h": 180.78,
+   "text": "CLAIM CONTEXT\nClaim Context includes timing and payout-related factors tied to c"
+  },
+  {
+   "x": 217,
+   "y": 731.53,
+   "w": 566,
+   "h": 100.39,
+   "text": "RISK HISTORY\nRisk History summarizes prior behavior and historical signals used "
+  }
+ ],
+ "fields": [
+  {
+   "x": 217,
+   "y": 355.97,
+   "w": 276,
+   "h": 66.39,
+   "text": "AGE OF DRIVER"
+  },
+  {
+   "x": 507,
+   "y": 355.97,
+   "w": 276,
+   "h": 66.39,
+   "text": "DRIVER GENDER\nFemale\nMale"
+  },
+  {
+   "x": 217,
+   "y": 436.36,
+   "w": 276,
+   "h": 66.39,
+   "text": "LIVING STATUS\nOwn\nRent"
+  },
+  {
+   "x": 507,
+   "y": 436.36,
+   "w": 276,
+   "h": 66.39,
+   "text": "HIGHER EDUCATION\nYes"
+  },
+  {
+   "x": 217,
+   "y": 560.75,
+   "w": 276,
+   "h": 66.39,
+   "text": "CLAIM DAY OF WEEK\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  },
+  {
+   "x": 507,
+   "y": 560.75,
+   "w": 276,
+   "h": 66.39,
+   "text": "CLAIM ESTIMATED PAYOUT"
+  },
+  {
+   "x": 217,
+   "y": 641.14,
+   "w": 276,
+   "h": 66.39,
+   "text": "ANNUAL INCOME"
+  },
+  {
+   "x": 507,
+   "y": 641.14,
+   "w": 276,
+   "h": 66.39,
+   "text": "WITNESS PRESENT\nNo"
+  },
+  {
+   "x": 217,
+   "y": 765.53,
+   "w": 276,
+   "h": 66.39,
+   "text": "PAST CLAIMS"
+  },
+  {
+   "x": 507,
+   "y": 765.53,
+   "w": 276,
+   "h": 66.39,
+   "text": "SAFETY RATING"
+  }
+ ],
+ "selects": [
+  {
+   "x": 507,
+   "y": 377.97,
+   "w": 276,
+   "h": 44.39,
+   "text": "Female\nMale"
+  },
+  {
+   "x": 217,
+   "y": 458.36,
+   "w": 276,
+   "h": 44.39,
+   "text": "Own\nRent"
+  },
+  {
+   "x": 217,
+   "y": 582.75,
+   "w": 276,
+   "h": 44.39,
+   "text": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+  }
+ ],
+ "inputs": [
+  {
+   "x": 217,
+   "y": 377.97,
+   "w": 276,
+   "h": 44.39,
+   "text": "45"
+  },
+  {
+   "x": 521,
+   "y": 480.05,
+   "w": 1,
+   "h": 1,
+   "text": "on"
+  },
+  {
+   "x": 507,
+   "y": 582.75,
+   "w": 276,
+   "h": 44.39,
+   "text": "5000"
+  },
+  {
+   "x": 217,
+   "y": 663.14,
+   "w": 276,
+   "h": 44.39,
+   "text": "38000"
+  },
+  {
+   "x": 521,
+   "y": 684.83,
+   "w": 1,
+   "h": 1,
+   "text": "on"
+  },
+  {
+   "x": 217,
+   "y": 787.53,
+   "w": 276,
+   "h": 44.39,
+   "text": "0"
+  },
+  {
+   "x": 507,
+   "y": 787.53,
+   "w": 276,
+   "h": 44.39,
+   "text": "75"
+  }
+ ],
+ "summaryText": [],
+ "summaryHead": [],
+ "groups": [],
+ "source": [],
+ "fieldsByLabel": [
+  {
+   "label": "AGE OF DRIVER",
+   "ctrl": {
+    "x": 217,
+    "y": 377.97,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 355.97,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "DRIVER GENDER",
+   "ctrl": {
+    "x": 507,
+    "y": 377.97,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 355.97,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "LIVING STATUS",
+   "ctrl": {
+    "x": 217,
+    "y": 458.36,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 436.36,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "HIGHER EDUCATION",
+   "ctrl": {
+    "x": 507,
+    "y": 458.36,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 436.36,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "CLAIM DAY OF WEEK",
+   "ctrl": {
+    "x": 217,
+    "y": 582.75,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 560.75,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "CLAIM ESTIMATED PAYOUT",
+   "ctrl": {
+    "x": 507,
+    "y": 582.75,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 560.75,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "ANNUAL INCOME",
+   "ctrl": {
+    "x": 217,
+    "y": 663.14,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 641.14,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "WITNESS PRESENT",
+   "ctrl": {
+    "x": 507,
+    "y": 663.14,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 641.14,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "PAST CLAIMS",
+   "ctrl": {
+    "x": 217,
+    "y": 787.53,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 217,
+    "y": 765.53,
+    "w": 276,
+    "h": 66.39
+   }
+  },
+  {
+   "label": "SAFETY RATING",
+   "ctrl": {
+    "x": 507,
+    "y": 787.53,
+    "w": 276,
+    "h": 44.39
+   },
+   "box": {
+    "x": 507,
+    "y": 765.53,
+    "w": 276,
+    "h": 66.39
+   }
+  }
+ ],
+ "doc": {
+  "w": 1440,
+  "h": 1094
+ }
+}

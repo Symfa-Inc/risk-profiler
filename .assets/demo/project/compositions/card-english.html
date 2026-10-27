@@ -1,0 +1,41 @@
+<template>
+<style>
+  @font-face { font-family: "DM Serif Display"; font-weight: 400; font-display: block; src: url("assets/fonts/dmserifdisplay-400-latin.woff2") format("woff2"); }
+  #root { position: absolute; inset: 0; overflow: hidden; }
+
+  #cenglish-sheet { position: absolute; inset: 0; background: #f8f9fb; }
+  #cenglish-line { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #cenglish-text { position: relative; isolation: isolate; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 120px; line-height: 1.04;
+    letter-spacing: -0.01em; color: #0f1419; white-space: nowrap; text-align: center; }
+  #cenglish-text .w { display: inline-block; color: #dfe3e8; }
+  #cenglish-acc { position: relative; display: inline-block; white-space: nowrap; }
+  #cenglish-mark { position: absolute; left: -0.08em; right: -0.08em; bottom: 0.1em; height: 0.3em; border-radius: 0.06em;
+    background: #f08526; opacity: 0.32; transform-origin: left center; z-index: -1; }
+</style>
+<div id="root" data-composition-id="card-english" data-width="1920" data-height="1080">
+  <div id="cenglish-stage" class="clip" data-start="0" data-duration="2.4" data-layout-allow-overflow>
+    <div id="cenglish-sheet"><div id="cenglish-line"><div id="cenglish-text" data-layout-allow-overlap><span class="w" id="cenglish-w0" style="margin-right: 0.25em">Read</span><span class="w" id="cenglish-w1" style="margin-right: 0.25em">it</span><span class="w" id="cenglish-w2" style="margin-right: 0.25em">in</span><span id="cenglish-acc"><span id="cenglish-mark"></span><span class="w" id="cenglish-w3" style="margin-right: 0.25em">plain</span><span class="w" id="cenglish-w4">English</span></span></div></div></div>
+  </div>
+</div>
+<script>
+(function () {
+  gsap.config({ force3D: false });
+  const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
+  gsap.set("#cenglish-sheet", { x: 2050 });
+
+  tl.fromTo("#cenglish-sheet", { x: 2050, filter: "blur(12px)" }, { x: 0, duration: 0.45, ease: "power3.inOut" }, 0);
+  tl.to("#cenglish-sheet", { filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0 + 0.25);
+  tl.set("#cenglish-sheet", { filter: "none" }, 0 + 0.46);
+  gsap.set("#cenglish-mark", { scaleX: 0 });
+  const ids = ["#cenglish-w0","#cenglish-w1","#cenglish-w2","#cenglish-w3","#cenglish-w4"], acc = [3,4];
+  ids.forEach((s, i) => {
+    const on = acc.includes(i);
+    tl.fromTo(s, { color: "#dfe3e8", y: on ? 10 : 0 }, { color: on ? "#15436d" : "#0f1419", y: 0, duration: on ? 0.3 : 0.2, ease: on ? "back.out(2)" : "power1.out" }, 0 + 0.4 + i * 0.09);
+  });
+  tl.to("#cenglish-mark", { scaleX: 1, duration: 0.42, ease: "power2.inOut" }, 0 + 0.4 + acc[acc.length - 1] * 0.09 + 0.16);
+  tl.to("#cenglish-sheet", { x: -2050, duration: 0.45, ease: "power3.inOut" }, 0 + 2.4 - 0.45);
+  tl.to("#cenglish-sheet", { filter: "blur(12px)", duration: 0.22, ease: "power2.in" }, 0 + 2.4 - 0.45);
+  window.__timelines["card-english"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,63 @@
+{
+ "faces": [
+  "Rajdhani 700 normal unloaded",
+  "Rajdhani 700 normal unloaded",
+  "Rajdhani 700 normal unloaded",
+  "Rajdhani Fallback normal normal unloaded",
+  "DM Serif Display 400 normal unloaded",
+  "DM Serif Display 400 normal loaded",
+  "DM Serif Display Fallback normal normal unloaded",
+  "IBM Plex Mono 300 normal unloaded",
+  "IBM Plex Mono 300 normal unloaded",
+  "IBM Plex Mono 300 normal unloaded",
+  "IBM Plex Mono 300 normal unloaded",
+  "IBM Plex Mono 300 normal unloaded",
+  "IBM Plex Mono 400 normal unloaded",
+  "IBM Plex Mono 400 normal unloaded",
+  "IBM Plex Mono 400 normal unloaded",
+  "IBM Plex Mono 400 normal unloaded",
+  "IBM Plex Mono 400 normal loaded",
+  "IBM Plex Mono 500 normal unloaded",
+  "IBM Plex Mono 500 normal unloaded",
+  "IBM Plex Mono 500 normal unloaded",
+  "IBM Plex Mono 500 normal unloaded",
+  "IBM Plex Mono 500 normal loaded",
+  "IBM Plex Mono 600 normal unloaded",
+  "IBM Plex Mono 600 normal unloaded",
+  "IBM Plex Mono 600 normal unloaded",
+  "IBM Plex Mono 600 normal unloaded",
+  "IBM Plex Mono 600 normal unloaded",
+  "IBM Plex Mono 700 normal unloaded",
+  "IBM Plex Mono 700 normal unloaded",
+  "IBM Plex Mono 700 normal unloaded",
+  "IBM Plex Mono 700 normal unloaded",
+  "IBM Plex Mono 700 normal loaded",
+  "IBM Plex Mono Fallback normal normal loaded",
+  "__nextjs-Geist 400 600 normal unloaded",
+  "__nextjs-Geist Mono 400 600 normal unloaded",
+  "__nextjs-Geist 400 600 normal unloaded",
+  "__nextjs-Geist Mono 400 600 normal unloaded"
+ ],
+ "h1": {
+  "family": "\"DM Serif Display\", \"DM Serif Display Fallback\", serif",
+  "weight": "400",
+  "size": "80px"
+ },
+ "body": {
+  "family": "\"IBM Plex Mono\", \"IBM Plex Mono Fallback\", \"Courier New\", monospace",
+  "weight": "400",
+  "size": "14px"
+ },
+ "gauge": null,
+ "btn": {
+  "family": "\"IBM Plex Mono\", \"IBM Plex Mono Fallback\", monospace",
+  "weight": "700",
+  "size": "12px"
+ },
+ "select": {
+  "family": "\"IBM Plex Mono\", \"IBM Plex Mono Fallback\", monospace",
+  "weight": "400",
+  "size": "14px"
+ },
+ "checkRaj": false
+}

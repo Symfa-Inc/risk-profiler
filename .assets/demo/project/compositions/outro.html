@@ -1,0 +1,62 @@
+<template>
+<style>
+  @font-face { font-family: "DM Serif Display"; font-weight: 400; font-display: block; src: url("assets/fonts/dmserifdisplay-400-latin.woff2") format("woff2"); }
+  @font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-display: block; src: url("assets/fonts/ibmplexmono-500-latin.woff2") format("woff2"); }
+  #root { position: absolute; inset: 0; overflow: hidden; }
+  #out-sheet { position: absolute; inset: 0; }
+  #out-ground { position: absolute; inset: 0; background: #f8f9fb; }
+  /* house end card (B2): mark 220 px, wordmark ink 108-114 px, 60 px mark-word gap, 96 px to the tagline, 50 px to the URL.
+     Tops and the tagline's 6 px left inset are measured ink corrections (tools: endcard.py), not design values. */
+  #out-lockup { position: absolute; left: 0; right: 0; top: 322px; height: 220px; display: flex; justify-content: center; align-items: center; gap: 58px; }
+  #out-markbox { width: 184px; height: 220px; position: relative; }
+  #out-mark { width: 184px; height: 220px; display: block; }
+  #out-word { font-family: "DM Serif Display", serif; font-size: 150px; line-height: 1; letter-spacing: -0.01em; color: #0f1419; white-space: nowrap; }
+  #out-word .l { display: inline-block; }
+  #out-line { position: absolute; left: 6px; right: 0; top: 633px; text-align: center; font-family: "IBM Plex Mono", monospace; font-weight: 500;
+    font-size: 46px; line-height: 1; color: #5c6d7e; letter-spacing: -0.015em; white-space: nowrap; }
+  #out-url { position: absolute; left: 0; right: 0; top: 719px; text-align: center; font-family: "IBM Plex Mono", monospace; font-weight: 500;
+    font-size: 36px; line-height: 1; color: #1a2b3c; letter-spacing: 0.01em; white-space: nowrap; }
+</style>
+<div id="root" data-composition-id="outro" data-width="1920" data-height="1080">
+  <div id="out-stage" class="clip" data-start="0" data-duration="7.5">
+   <div id="out-sheet">
+    <div id="out-ground"></div>
+    <div id="out-lockup">
+      <div id="out-markbox"><img id="out-mark" src="assets/brand/riskprofiler-mark.png" alt="RiskProfiler" /></div>
+      <div id="out-word"><span class="l">R</span><span class="l">i</span><span class="l">s</span><span class="l">k</span><span class="l">P</span><span class="l">r</span><span class="l">o</span><span class="l">f</span><span class="l">i</span><span class="l">l</span><span class="l">e</span><span class="l">r</span></div>
+    </div>
+    <div id="out-line">Fraud scores you can explain.</div>
+    <div id="out-url">risk-profiler.symfa.ai</div>
+   </div>
+  </div>
+</div>
+<script>
+(function () {
+  gsap.config({ force3D: false });
+  const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });
+  gsap.set("#out-word .l", { opacity: 0 });
+  gsap.set(["#out-line", "#out-url"], { opacity: 0 });
+  gsap.set("#out-mark", { clipPath: "inset(100% 0% 0% 0%)" });
+  // the end card arrives the way every card does: a sheet whipping in from the right
+  gsap.set("#out-sheet", { x: 2050 });
+  tl.fromTo("#out-sheet", { x: 2050, filter: "blur(12px)" }, { x: 0, duration: 0.45, ease: "power3.inOut" }, 0);
+  tl.to("#out-sheet", { filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.25);
+  tl.set("#out-sheet", { filter: "none" }, 0.46);
+  const D = 0.4; // everything below lands after the sheet
+  // the shield fills from the bottom up
+  tl.fromTo("#out-mark", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.75, ease: "power3.out" }, 0.15 + D);
+  tl.set("#out-mark", { clipPath: "none" }, 0.91 + D);
+  // the wordmark lands letter by letter
+  document.querySelectorAll("#out-word .l").forEach((el, i) => {
+    tl.fromTo(el, { opacity: 0.3, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, 0.55 + D + i * 0.05);
+    tl.set(el, { filter: "none" }, 0.55 + D + i * 0.05 + 0.17);
+  });
+  // tagline at 1.75 s and URL at 2.15 s, 0.3 s each: everything has landed by 2.45 s, then the card holds still
+  tl.fromTo("#out-line", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 1.35 + D);
+  tl.set("#out-line", { filter: "none" }, 1.66 + D);
+  tl.fromTo("#out-url", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 1.75 + D);
+  tl.set("#out-url", { filter: "none" }, 2.06 + D);
+  window.__timelines["outro"] = tl;
+})();
+</script>
+</template>

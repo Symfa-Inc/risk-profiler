@@ -1,0 +1,400 @@
+<!doctype html><html><head><meta charset="utf-8"><base href="../"><style>@font-face { font-family: "Rajdhani"; font-style: normal; font-weight: 700; font-display: block; src: url("assets/fonts/rajdhani-700-latin.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-style: normal; font-weight: 400; font-display: block; src: url("assets/fonts/dmserifdisplay-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 300; font-display: block; src: url("assets/fonts/ibmplexmono-300-latin.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: block; src: url("assets/fonts/ibmplexmono-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: block; src: url("assets/fonts/ibmplexmono-500-latin.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 600; font-display: block; src: url("assets/fonts/ibmplexmono-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 700; font-display: block; src: url("assets/fonts/ibmplexmono-700-latin.woff2") format("woff2"); }
+@font-face { font-family: "Rajdhani Fallback"; src: local("Arial"); ascent-override: 102.12%; descent-override: 37.99%; line-gap-override: 0%; size-adjust: 91.07%; }
+@font-face { font-family: "DM Serif Display Fallback"; src: local("Times New Roman"); ascent-override: 94.37%; descent-override: 30.51%; line-gap-override: 0%; size-adjust: 109.78%; }
+@font-face { font-family: "IBM Plex Mono Fallback"; src: local("Arial"); ascent-override: 76.16%; descent-override: 20.43%; line-gap-override: 0%; size-adjust: 134.59%; }
+@layer properties {
+  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+  *, ::before, ::after, ::backdrop { --gauge-deg: 0deg; }
+}
+}
+@layer theme {
+  :root, :host { --font-sans: ui-sans-serif, system-ui, sans-serif; --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; --spacing: .25rem; --radius-sm: .25rem; --radius-md: .375rem; --radius-xl: .75rem; --shadow-xs: 0 1px 2px 0 #0000000d; --shadow-sm: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a; --shadow-md: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a; --shadow-lg: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a; --default-font-family: var(--font-sans); --default-mono-font-family: var(--font-mono); }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop { box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; }
+  ::file-selector-button { box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; }
+  html, :host { text-size-adjust: 100%; tab-size: 4; line-height: 1.5; font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif); font-feature-settings: var(--default-font-feature-settings, normal); font-variation-settings: var(--default-font-variation-settings, normal); -webkit-tap-highlight-color: transparent; }
+  hr { height: 0px; color: inherit; border-top-width: 1px; }
+  abbr:where([title]) { text-decoration: underline dotted; }
+  h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+  a { color: inherit; text-decoration: inherit; }
+  b, strong { font-weight: bolder; }
+  code, kbd, samp, pre { font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); font-feature-settings: var(--default-mono-font-feature-settings, normal); font-variation-settings: var(--default-mono-font-variation-settings, normal); font-size: 1em; }
+  small { font-size: 80%; }
+  sub, sup { vertical-align: baseline; font-size: 75%; line-height: 0; position: relative; }
+  sub { bottom: -0.25em; }
+  sup { top: -0.5em; }
+  table { text-indent: 0px; border-color: inherit; border-collapse: collapse; }
+  progress { vertical-align: baseline; }
+  summary { display: list-item; }
+  ol, ul, menu { list-style: none; }
+  img, svg, video, canvas, audio, iframe, embed, object { vertical-align: middle; display: block; }
+  img, video { max-width: 100%; height: auto; }
+  button, input, select, optgroup, textarea { font: inherit; letter-spacing: inherit; color: inherit; opacity: 1; background-color: rgba(0, 0, 0, 0); border-radius: 0px; }
+  ::file-selector-button { font: inherit; letter-spacing: inherit; color: inherit; opacity: 1; background-color: rgba(0, 0, 0, 0); border-radius: 0px; }
+  :where(select:is([multiple], [size])) optgroup { font-weight: bolder; }
+  :where(select:is([multiple], [size])) optgroup option { padding-inline-start: 20px; }
+  ::file-selector-button { margin-inline-end: 4px; }
+  ::placeholder { opacity: 1; }
+  @supports (not ((-webkit-appearance: -apple-pay-button))) or (contain-intrinsic-size: 1px) {
+  ::placeholder { color: currentcolor; }
+  @supports (color: color-mix(in lab, red, red)) {
+  ::placeholder { color: color-mix(currentcolor, transparent); }
+}
+}
+  textarea { resize: vertical; }
+  ::-webkit-search-decoration { appearance: none; }
+  ::-webkit-date-and-time-value { min-height: 1lh; text-align: inherit; }
+  ::-webkit-datetime-edit { display: inline-flex; }
+  ::-webkit-datetime-edit-fields-wrapper { padding: 0px; }
+  ::-webkit-datetime-edit { padding-block: 0px; }
+  ::-webkit-datetime-edit-year-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-month-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-day-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-hour-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-minute-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-second-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-millisecond-field { padding-block: 0px; }
+  ::-webkit-datetime-edit-meridiem-field { padding-block: 0px; }
+  ::-webkit-calendar-picker-indicator { line-height: 1; }
+  button, input:where([type="button"], [type="reset"], [type="submit"]) { appearance: button; }
+  ::file-selector-button { appearance: button; }
+  ::-webkit-inner-spin-button { height: auto; }
+  ::-webkit-outer-spin-button { height: auto; }
+  [hidden]:where(:not([hidden="until-found"])) { display: none !important; }
+}
+@layer components;
+@layer utilities {
+  .sr-only { clip-path: inset(50%); white-space: nowrap; border-width: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; position: absolute; overflow: hidden; }
+  .start { inset-inline-start: var(--spacing); }
+  .end { inset-inline-end: var(--spacing); }
+}
+:root { --bg: #f8f9fb; --surface: #fff; --surface-2: #f1f3f6; --surface-3: #e8ebef; --border: #0000000f; --border-hi: #0000001a; --text: #2c3338; --text-strong: #0f1419; --muted: #5c6d7e; --muted-2: #8a96a3; --accent: #1a2b3c; --accent-dim: #1a2b3c0a; --accent-glow: #1a2b3c1a; --low: #2ba86e; --low-bg: #2ba86e0f; --low-border: #2ba86e24; --high: #eb3232; --high-bg: #eb32320d; --high-border: #eb323224; --shadow-xs: 0 1px 2px #0000000a; --shadow-sm: 0 1px 3px #0000000f, 0 1px 2px #0000000a; --shadow-md: 0 4px 12px #0000000f, 0 1px 3px #0000000a; --shadow-lg: 0 8px 24px #00000012, 0 2px 6px #0000000a; --shadow-focus: 0 0 0 3px #1a2b3c1f; --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 20px; }
+*, ::before, ::after { box-sizing: border-box; }
+body { min-height: 100vh; font-family: var(--font-mono), "Courier New", monospace; color: var(--text); -webkit-font-smoothing: antialiased; background: var(--bg); margin: 0px; font-size: 14px; line-height: 1.6; }
+h1, h2, h3, h4, p { margin: 0px; }
+button, input, select { font: inherit; }
+.page-shell { max-width: 1120px; margin: 0px auto; padding: 56px 24px 96px; }
+.site-header { padding-bottom: 52px; }
+.header-tag { letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; font-size: 10px; font-weight: 500; display: inline-block; }
+h1 { font-family: var(--font-display), serif; letter-spacing: -0.01em; color: var(--text-strong); margin: 0px 0px 22px; font-size: clamp(3rem, 6.5vw, 5rem); font-weight: 400; line-height: 0.99; }
+.header-sub { width: calc(100% - 436px); color: var(--muted); text-align: justify; letter-spacing: 0.02em; max-width: calc(100% - 436px); margin: 0px; font-size: 12px; line-height: 1.7; }
+.content-grid { grid-template-columns: 1fr 420px; align-items: stretch; gap: 20px; display: grid; }
+.form-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); padding: 32px; }
+.form-section { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; margin-bottom: 24px; padding-bottom: 0px; }
+.form-section:last-of-type { margin-bottom: 0px; padding-bottom: 0px; }
+.section-label { letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); align-items: center; gap: 12px; margin-bottom: 16px; font-size: 10px; font-weight: 500; display: flex; }
+.section-label::after { content: ""; background: var(--border-hi); flex: 1 1 0%; align-self: center; height: 1px; }
+.section-label-main { align-items: center; gap: 8px; min-height: 18px; line-height: 1; display: flex; }
+.form-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; display: grid; }
+label.field { flex-direction: column; gap: 6px; display: flex; }
+.field-label { letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); font-size: 10px; font-weight: 500; }
+.field-label[data-hint] { cursor: help; width: fit-content; position: relative; }
+.field-label[data-hint]::after { content: attr(data-hint); border-radius: var(--radius-sm); border: 1px solid var(--border-hi); background: var(--surface); width: max-content; max-width: 220px; color: var(--text); letter-spacing: 0.04em; text-transform: none; opacity: 0; pointer-events: none; z-index: 2; box-shadow: var(--shadow-lg); padding: 6px 10px; font-size: 10px; font-weight: 400; line-height: 1.4; position: absolute; bottom: calc(100% + 6px); left: 0px; transform: translateY(3px); }
+.field-label[data-hint]:hover::after { opacity: 1; transform: translateY(0px); }
+.sr-only { clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; position: absolute; overflow: hidden; }
+input, select { font-family: var(--font-mono), monospace; background: var(--surface); border: 1px solid var(--border-hi); border-radius: var(--radius-sm); color: var(--text-strong); appearance: none; width: 100%; padding: 10px 13px; font-size: 14px; }
+input:hover, select:hover { border-color: rgba(0, 0, 0, 0.18); }
+input[type="number"]::-webkit-inner-spin-button { appearance: none; margin: 0px; }
+input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0px; }
+input[type="number"] { appearance: textfield; }
+select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='6' viewBox='0 0 11 6'%3E%3Cpath d='M1 1l4.5 4L10 1' stroke='%236b7b8d' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-position: right 13px center; background-repeat: no-repeat; padding-right: 34px; }
+input:focus, select:focus { border-color: var(--accent); box-shadow: var(--shadow-focus); outline: none; }
+.toggle-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; display: grid; }
+.toggle-label { background: var(--surface); border: 1px solid var(--border-hi); border-radius: var(--radius-sm); cursor: pointer; color: var(--text); user-select: none; letter-spacing: 0.02em; align-items: center; gap: 10px; padding: 10px 14px; font-size: 12px; display: flex; }
+.toggle-label:hover { border-color: rgba(0, 0, 0, 0.18); }
+.toggle-label:has(input:checked) { border-color: var(--accent); background: var(--accent-dim); color: var(--text-strong); box-shadow: 0 0 0 1px var(--accent); }
+.toggle-label input:not(.sr-only) { display: none; }
+.toggle-dot { border: 1.5px solid var(--muted-2); border-radius: 50%; flex-shrink: 0; justify-content: center; align-items: center; width: 16px; height: 16px; display: flex; position: relative; }
+.toggle-dot::after { content: ""; background: var(--surface); opacity: 0; border-radius: 50%; width: 7px; height: 7px; }
+.toggle-label:has(input:checked) .toggle-dot { border-color: var(--accent); background: var(--accent); }
+.toggle-label:has(input:checked) .toggle-dot::after { opacity: 1; }
+.toggle-label:focus-within { border-color: var(--accent); box-shadow: var(--shadow-focus); outline: none; }
+.toggle-field { flex-direction: column; gap: 6px; display: flex; }
+.toggle-label--grid { flex: 1 1 0%; font-size: 14px; }
+.form-actions { margin-top: 32px; }
+.form-footer { justify-content: space-between; align-items: center; min-height: 20px; margin-top: 10px; display: flex; }
+.reset-link { font-family: var(--font-mono), monospace; color: var(--muted); cursor: pointer; letter-spacing: 0.04em; background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 0px; font-size: 10px; }
+.reset-link:hover { color: var(--text-strong); }
+.shortcut-hint { color: var(--muted-2); letter-spacing: 0.04em; margin-left: auto; font-size: 10px; }
+.form-status { color: var(--muted-2); letter-spacing: 0.04em; margin-top: 8px; font-size: 10px; }
+.run-btn { background: var(--accent); color: rgb(255, 255, 255); border-radius: var(--radius-md); width: 100%; font-family: var(--font-mono), monospace; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; justify-content: center; align-items: center; gap: 9px; padding: 14px 20px; font-size: 12px; font-weight: 700; display: flex; }
+.run-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.run-btn:active { box-shadow: var(--shadow-xs); transform: translateY(0px); }
+.run-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; transform: none; }
+.run-btn:disabled.is-loading { cursor: progress; }
+.elapsed-time { opacity: 0.55; font-variant-numeric: tabular-nums; text-align: right; min-width: 3.5ch; }
+.spinner { border-width: 2px; border-style: solid; border-color: rgb(255, 255, 255) rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.3); border-image: none; border-radius: 50%; width: 13px; height: 13px; }
+.result-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); flex-direction: column; padding: 32px; display: flex; position: sticky; top: 24px; }
+.result-heading { letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); align-items: center; gap: 12px; margin-bottom: 28px; font-size: 10px; font-weight: 500; display: flex; }
+.result-heading::after { content: ""; background: var(--border-hi); flex: 1 1 0%; align-self: center; height: 1px; }
+.result-heading-main { align-items: center; gap: 8px; min-height: 18px; line-height: 1; display: flex; }
+@property --gauge-deg { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.gauge-wrap { flex: 1 1 0%; justify-content: center; align-items: center; display: flex; }
+.gauge-ring { --gauge-deg: 0deg; --gauge-color: var(--muted-2); --threshold-deg: 0deg; background: conic-gradient(var(--gauge-color) var(--gauge-deg), var(--surface-2) var(--gauge-deg)); width: 200px; height: 200px; box-shadow: var(--shadow-xs); border-radius: 50%; padding: 22px; position: relative; }
+.gauge-threshold-line { background: var(--text-strong); width: 2px; height: 20px; transform: translate(-50%, -50%) rotate(var(--threshold-deg)) translateY(-89px); border-radius: 999px; position: absolute; top: 50%; left: 50%; box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; }
+.gauge-inner { background: var(--surface); border-radius: 50%; flex-direction: column; justify-content: center; align-items: center; gap: 4px; width: 100%; height: 100%; display: flex; }
+.gauge-percent { font-family: var(--font-rajdhani), sans-serif; letter-spacing: 0.02em; color: var(--text-strong); font-size: 3.2rem; font-weight: 700; line-height: 1; }
+.gauge-tier { letter-spacing: 0.22em; text-transform: uppercase; font-size: 9px; font-weight: 600; }
+.gauge-tier.tier-low { color: var(--low); }
+.gauge-tier.tier-high { color: var(--high); }
+.gauge-meta { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; justify-content: space-between; gap: 10px; margin-top: 16px; font-size: 10px; display: flex; }
+.explanation-block { padding-top: 4px; }
+.explanation-head { letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); align-items: center; gap: 12px; margin-bottom: 14px; font-size: 10px; font-weight: 500; display: flex; }
+.explanation-head::after { content: ""; background: var(--border-hi); flex: 1 1 0%; align-self: center; height: 1px; }
+.explanation-head-main { align-items: center; gap: 8px; min-height: 18px; line-height: 1; display: flex; }
+.waterfall-summary { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; justify-content: space-between; gap: 10px; margin-bottom: 12px; font-size: 10px; display: flex; }
+.waterfall-list { flex-direction: column; gap: 10px; margin: 0px; padding: 0px; list-style: none; display: flex; }
+.waterfall-row { flex-direction: column; gap: 5px; display: flex; }
+.waterfall-meta { justify-content: space-between; align-items: center; gap: 10px; display: flex; }
+.waterfall-name { letter-spacing: 0.03em; color: var(--text); font-size: 11px; }
+.waterfall-delta { letter-spacing: 0.04em; font-size: 11px; font-weight: 600; }
+.waterfall-delta-increase { color: var(--high); }
+.waterfall-delta-decrease { color: var(--low); }
+.waterfall-delta-neutral { color: var(--muted); }
+.waterfall-track { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; height: 16px; position: relative; overflow: hidden; }
+.waterfall-marker { width: 1px; position: absolute; top: -1px; bottom: -1px; transform: translateX(-0.5px); }
+.waterfall-marker-base { background: rgba(0, 0, 0, 0.15); }
+.waterfall-bar { border-radius: 0px; position: absolute; top: 2px; bottom: 2px; }
+.waterfall-increase { background: rgba(235, 50, 50, 0.65); border-top-right-radius: 999px; border-bottom-right-radius: 999px; }
+.waterfall-decrease { background: rgba(58, 158, 122, 0.75); border-top-left-radius: 999px; border-bottom-left-radius: 999px; }
+.waterfall-neutral { background: rgba(107, 123, 141, 0.3); border-radius: 0px; }
+.waterfall-values { color: var(--text); letter-spacing: 0.02em; font-size: 10px; font-weight: 300; }
+.effects-info { width: 18px; height: 18px; color: var(--muted-2); cursor: help; background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; flex-shrink: 0; justify-content: center; align-self: center; align-items: center; margin: 0px; padding: 0px; display: inline-flex; position: relative; }
+.effects-info:hover { color: var(--text); }
+.effects-info-icon { width: 16px; height: 16px; display: block; }
+.effects-info:focus-visible { color: var(--text); box-shadow: var(--shadow-focus); border-radius: 999px; outline: none; }
+.effects-tooltip { border-radius: var(--radius-sm); border: 1px solid var(--border-hi); background: var(--surface); width: min(260px, 70vw); color: var(--text); letter-spacing: 0.015em; text-transform: none; opacity: 0; pointer-events: none; z-index: 2; box-shadow: var(--shadow-lg); padding: 9px 10px; font-size: 10px; font-weight: 400; line-height: 1.45; position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translate(-50%, 4px); }
+.effects-info:hover .effects-tooltip, .effects-info:focus-visible .effects-tooltip { opacity: 1; transform: translate(-50%); }
+.summary-panel { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); margin-top: 20px; padding: 28px 32px; }
+.summary-card-head { justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; display: flex; }
+.summary-card-title { letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); align-items: center; gap: 8px; font-size: 10px; font-weight: 500; display: inline-flex; }
+.summary-source { letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--border-hi); border-radius: 999px; padding: 3px 8px; font-size: 9px; font-weight: 500; }
+.summary-source-openai { color: var(--low); background: rgba(43, 168, 110, 0.06); border-color: rgba(43, 168, 110, 0.28); }
+.summary-source-fallback { color: var(--muted); background: rgba(26, 43, 60, 0.04); border-color: rgba(26, 43, 60, 0.2); }
+.summary-headline { color: var(--text-strong); letter-spacing: 0.01em; margin: 0px 0px 6px; font-size: 14px; line-height: 1.5; }
+.summary-text { color: var(--text); margin: 0px 0px 20px; font-size: 12px; line-height: 1.7; }
+.summary-columns { grid-template-columns: repeat(3, 1fr); gap: 16px; display: grid; }
+.summary-group h3 { color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin: 0px 0px 8px; font-size: 10px; font-weight: 500; }
+.summary-group--risk h3 { color: var(--high); }
+.summary-group--protective h3 { color: var(--low); }
+.summary-group ul { flex-direction: column; gap: 6px; margin: 0px; padding: 0px; list-style: none; display: flex; }
+.summary-group li { color: var(--text); background: var(--surface-2); border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--border-hi); border-radius: var(--radius-sm); padding: 8px 10px; font-size: 11px; line-height: 1.5; }
+.summary-group--risk li { border-left-color: var(--high); }
+.summary-group--protective li { border-left-color: var(--low); }
+.summary-empty { color: var(--muted); letter-spacing: 0.06em; text-align: center; border: 1px dashed var(--border-hi); border-radius: var(--radius-sm); padding: 28px 16px; font-size: 11px; }
+.result-empty { color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; flex-direction: column; flex: 1 1 0%; justify-content: center; align-items: center; gap: 20px; font-size: 10px; display: flex; }
+.pulse-ring { border: 1px solid rgba(26, 43, 60, 0.18); border-radius: 50%; width: 76px; height: 76px; position: relative; box-shadow: rgba(26, 43, 60, 0.06) 0px 0px 0px 1px, rgba(26, 43, 60, 0.06) 0px 0px 16px; }
+.pulse-ring::before { content: ""; border: 1px solid rgba(26, 43, 60, 0.16); border-radius: 50%; position: absolute; inset: -10px; }
+.pulse-ring::after { content: ""; background: rgba(26, 43, 60, 0.14); border-radius: 50%; position: absolute; inset: 21px; box-shadow: rgba(26, 43, 60, 0.1) 0px 0px 10px; }
+.error-bar { background: var(--high-bg); border: 1px solid var(--high-border); border-radius: var(--radius-sm); color: var(--high); letter-spacing: 0.03em; margin-bottom: 16px; padding: 12px 16px; font-size: 12px; }
+.result-entrance { }
+.importance-list { flex-direction: column; gap: 10px; margin: 0px; padding: 0px; list-style: none; display: flex; }
+.importance-row { flex-direction: column; gap: 5px; display: flex; }
+.importance-meta { justify-content: space-between; align-items: center; gap: 10px; display: flex; }
+.importance-name { letter-spacing: 0.03em; color: var(--text); font-size: 11px; }
+.importance-value { letter-spacing: 0.04em; color: var(--accent); font-size: 11px; font-weight: 600; }
+.importance-track { background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; height: 10px; overflow: hidden; }
+.importance-bar { background: var(--accent); opacity: 0.6; border-radius: 999px; height: 100%; }
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+@keyframes waterfall-enter {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+@keyframes pulse-core {
+  0%, 100% { opacity: 0.32; transform: scale(0.9); }
+  50% { opacity: 0.78; transform: scale(1.15); }
+}
+@media (max-width: 920px) {
+  .header-sub { width: 100%; max-width: 100%; }
+  .content-grid { grid-template-columns: 1fr; }
+  .result-panel { position: static; }
+  .form-grid, .toggle-grid, .summary-columns { grid-template-columns: 1fr; }
+}
+
+#rp-page { --font-rajdhani: "Rajdhani", "Rajdhani Fallback"; --font-display: "DM Serif Display", "DM Serif Display Fallback"; --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback"; font-family: var(--font-mono), "Courier New", monospace; font-size: 14px; line-height: 1.6; color: var(--text); -webkit-font-smoothing: antialiased; }
+/* Film-only layers on top of the app's compiled CSS. Nothing here restyles the app itself. */
+#root { position: absolute; inset: 0; overflow: hidden; background: #f8f9fb; }
+#rp-stage { position: absolute; inset: 0; }
+#rp-fx { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: #f8f9fb; }
+/* camera: 2D transforms only, no will-change (Chrome would rasterize the zoomed page at 1x) */
+#rp-cam { position: absolute; left: 0; top: 0; width: 1440px; height: 1700px; }
+#rp-page { position: absolute; left: 0; top: 0; width: 1440px; height: 1700px; background: var(--bg); }
+#rp-main { font-size: 14px; }
+
+.rp-ctl { position: relative; display: block; }
+.rp-over { position: absolute; inset: 0; opacity: 0; }
+.rp-ring { position: absolute; inset: 0; border-radius: var(--radius-sm); pointer-events: none; opacity: 0; border: 1px solid rgba(0, 0, 0, 0.18); }
+.rp-ring--focus { border-color: var(--accent); box-shadow: var(--shadow-focus); }
+
+.rp-menu { position: absolute; left: 0; top: calc(100% + 4px); width: 100%; z-index: 30; display: block; opacity: 0;
+  background: var(--surface); border: 1px solid var(--border-hi); border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); padding: 4px; }
+.rp-opt { position: relative; display: block; height: 32px; line-height: 32px; padding: 0 12px; font-family: var(--font-mono), monospace;
+  font-size: 14px; color: var(--text-strong); white-space: nowrap; }
+.rp-opt.is-current { font-weight: 500; }
+.rp-check { position: absolute; right: 10px; top: 8px; width: 16px; height: 16px; color: var(--muted); }
+.rp-hl { position: absolute; left: 4px; right: 4px; top: 4px; height: 32px; border-radius: 6px; background: var(--surface-2); opacity: 0; }
+.rp-hl::before { content: ""; position: absolute; left: 0; top: 7px; bottom: 7px; width: 2px; border-radius: 2px; background: var(--accent); }
+
+.rp-val { position: absolute; left: 14px; top: 0; bottom: 0; display: flex; align-items: center; font-family: var(--font-mono), monospace;
+  font-size: 14px; color: var(--text-strong); z-index: 2; pointer-events: none; }
+#rp-past-4 { opacity: 0; }
+.rp-sel { position: absolute; left: 13.5px; top: 12px; width: 9.4px; height: 20px; background: #b4d5fe; opacity: 0; z-index: 1; }
+.rp-caret { position: absolute; left: 23px; top: 12px; width: 1.5px; height: 20px; background: var(--text-strong); opacity: 0; z-index: 3; }
+
+#rp-run { position: relative; }
+.rp-lbl { display: flex; align-items: center; justify-content: center; gap: 9px; }
+.rp-lbl.rp-over { position: absolute; inset: 0; }
+.rp-stack { position: relative; }
+.rp-stack .rp-over { position: absolute; left: 0; top: 0; right: 0; bottom: auto; }
+
+.rp-result-stack { display: grid; overflow: hidden; }
+.rp-res { grid-area: 1 / 1; opacity: 0; }
+.waterfall-bar { transform-origin: left center; }
+.waterfall-decrease { transform-origin: right center; }
+#rp-summary-wrap { opacity: 0; }
+.rp-mark { background-image: linear-gradient(rgba(235, 50, 50, 0.16), rgba(235, 50, 50, 0.16)); background-repeat: no-repeat;
+  background-position: 0 85%; background-size: 0% 72%; border-radius: 2px; }
+.effects-tooltip { opacity: 0; }
+
+/* cursor (page space; hotspot at the arrow tip) */
+/* the art sits 4 px left and 1 px up so its tip (5.5, 2.5) stays on the 1.5, 1.5 hotspot the click targets use */
+#rp-cursor { position: absolute; left: 0; top: 0; width: 24px; height: 24px; z-index: 50; pointer-events: none; }
+#rp-cursor-art { position: absolute; left: -4px; top: -1px; width: 24px; height: 24px; display: block; overflow: visible;
+  filter: drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.22)); }
+
+/* callouts (screen space, true size) */
+#rp-overlay { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
+#rp-leaders { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+.rp-callout { position: absolute; left: 0; top: 0; white-space: nowrap; font-family: "IBM Plex Mono", monospace; font-weight: 500;
+  font-size: 30px; line-height: 1.2; letter-spacing: -0.005em; color: #0f1419; background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #1a2b3c; border-radius: 12px; padding: 16px 24px 16px 22px; box-shadow: 0 14px 36px rgba(15, 20, 25, 0.13), 0 2px 6px rgba(15, 20, 25, 0.06);
+  opacity: 0; }
+.rp-callout--sm { font-size: 28px; padding: 14px 18px 14px 18px; }
+.rp-callout b { font-weight: 600; }
+.rp-callout .is-high { color: #eb3232; }
+.rp-callout .is-low { color: #2ba86e; }
+.rp-leader { stroke: #1a2b3c; stroke-width: 2; fill: none; opacity: 0; }
+.rp-dot { fill: #1a2b3c; stroke: #ffffff; stroke-width: 2.5; opacity: 0; }
+
+body{margin:0;background:#f8f9fb} #rp-page{position:relative}</style></head><body><div id="rp-page">
+<main class="page-shell" id="rp-main">
+  <header class="site-header">
+    <span class="header-tag">Insurance · Risk Profiler</span>
+    <h1>RiskProfiler</h1>
+    <p class="header-sub">Evaluate insurance claim fraud risk using machine learning and explainable AI. Review feature-level insights to understand what drives the predicted fraud probability.</p>
+  </header>
+
+  <div class="content-grid" id="rp-grid">
+    <form class="form-panel" id="rp-form">
+      <div class="form-section">
+        <div class="section-label"><span class="section-label-main">Driver Profile<button type="button" class="effects-info" aria-label="About Driver Profile"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip">Driver Profile captures baseline claimant characteristics that influence fraud propensity.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field"><span class="field-label">Age of driver</span><input type="number" value="45" readonly></label>
+          <label class="field"><span class="field-label">Driver gender</span><select><option value="M" selected>Male</option></select></label>
+          <label class="field"><span class="field-label">Living status</span><select><option value="Own" selected>Own</option></select></label>
+          <div class="field toggle-field"><span class="field-label">Higher education</span><label class="toggle-label toggle-label--grid"><input class="sr-only" type="checkbox" checked><span class="toggle-dot"></span>Yes</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-label" id="rp-sec-claim"><span class="section-label-main">Claim Context<button type="button" class="effects-info" aria-label="About Claim Context"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip">Claim Context includes timing and payout-related factors tied to claim plausibility.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field rp-day-field"><span class="field-label">Claim day of week</span>
+            <span class="rp-ctl" id="rp-day">
+              <select id="rp-day-mon"><option value="Monday" selected>Monday</option></select>
+              <select id="rp-day-fri" class="rp-over"><option value="Friday" selected>Friday</option></select>
+              <span class="rp-ring" id="rp-day-hover"></span>
+              <span class="rp-ring rp-ring--focus" id="rp-day-focus"></span>
+              <span class="rp-menu" id="rp-menu" role="listbox">
+                <span class="rp-hl" id="rp-menu-hl"></span>
+                <span class="rp-opt is-current" id="rp-opt-0">Monday<svg class="rp-check" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="rp-opt" id="rp-opt-1">Tuesday</span>
+                <span class="rp-opt" id="rp-opt-2">Wednesday</span>
+                <span class="rp-opt" id="rp-opt-3">Thursday</span>
+                <span class="rp-opt" id="rp-opt-4">Friday</span>
+                <span class="rp-opt" id="rp-opt-5">Saturday</span>
+                <span class="rp-opt" id="rp-opt-6">Sunday</span>
+              </span>
+            </span>
+          </label>
+          <label class="field"><span class="field-label">Claim estimated payout</span><input type="number" value="5000" readonly></label>
+          <label class="field"><span class="field-label">Annual income</span><input type="number" value="38000" readonly></label>
+          <div class="field toggle-field"><span class="field-label">Witness present</span><label class="toggle-label toggle-label--grid"><input class="sr-only" type="checkbox"><span class="toggle-dot"></span>No</label></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="section-label"><span class="section-label-main">Risk History<button type="button" class="effects-info" aria-label="About Risk History"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip">Risk History summarizes prior behavior and historical signals used by the model.</span></button></span></div>
+        <div class="form-grid">
+          <label class="field"><span class="field-label">Past claims</span>
+            <span class="rp-ctl" id="rp-past">
+              <input type="number" value="" readonly id="rp-past-input">
+              <span class="rp-val" id="rp-past-0">0</span>
+              <span class="rp-sel" id="rp-past-sel"></span>
+              <span class="rp-val" id="rp-past-4">4</span>
+              <span class="rp-caret" id="rp-past-caret"></span>
+              <span class="rp-ring" id="rp-past-hover"></span>
+              <span class="rp-ring rp-ring--focus" id="rp-past-focus"></span>
+            </span>
+          </label>
+          <label class="field" id="rp-safety"><span class="field-label">Safety rating</span><input type="number" value="75" readonly></label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="run-btn" type="button" id="rp-run">
+          <span class="rp-lbl" id="rp-lbl-run">Run Evaluation</span>
+          <span class="rp-lbl rp-over" id="rp-lbl-eval"><span class="spinner" id="rp-spin"></span>Evaluating<span class="elapsed-time" id="rp-elapsed">0.0s</span></span>
+          <span class="rp-lbl rp-over" id="rp-lbl-rerun">Re-run Evaluation</span>
+        </button>
+        <div class="form-footer">
+          <button type="button" class="reset-link">Reset to defaults</button>
+          <span class="shortcut-hint">⌘/Ctrl + Enter</span>
+        </div>
+        <p class="form-status rp-stack"><span id="rp-status-ready">Input changes are ready to score.</span><span class="rp-over" id="rp-status-match">Current values already match the latest result.</span></p>
+      </div>
+    </form>
+
+    <div class="result-panel" id="rp-result" aria-live="polite">
+      <div class="result-heading">
+        <span class="result-heading-main">Risk Assessment<button type="button" class="effects-info" aria-label="About Risk Assessment"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip">Risk Assessment shows the model's fraud probability for the current claim profile. Scores above the threshold indicate likely fraud.</span></button></span>
+      </div>
+      <div class="rp-result-stack" id="rp-result-stack">
+        <div class="rp-res" id="rp-resA"><div class="result-entrance" id="rpA-ent">
+  <div class="gauge-wrap"><div class="gauge-ring" id="rpA-gauge" style="--threshold-deg: 234deg; --gauge-deg: 0deg; --gauge-color: var(--low);"><span class="gauge-threshold-line" aria-hidden="true"></span><div class="gauge-inner"><div class="gauge-percent" id="rpA-pct">0%</div><div class="gauge-tier tier-low" id="rpA-tier">Low risk</div></div></div></div>
+  <div class="gauge-meta" id="rpA-meta"><span>Threshold 65%</span><span>30.0% below threshold</span></div>
+  <section class="explanation-block" id="rpA-fx"><div class="explanation-head"><span class="explanation-head-main">Feature Effects<button type="button" class="effects-info" id="rpA-fx-info" aria-label="How to read Feature Effects"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip" id="rpA-fx-tip">Baseline is the model's starting risk for a typical profile. Each bar shows how one feature moves risk up (red) or down (green) from that baseline.</span></button></span></div>
+  <div class="waterfall-summary" id="rpA-wfsum"><span>Baseline 40%</span><span>Current 35%</span></div>
+  <ul class="waterfall-list"><li class="waterfall-row" id="rpA-row-0"><div class="waterfall-meta"><span class="waterfall-name">Annual income</span><span class="waterfall-delta waterfall-delta-decrease" id="rpA-delta-0">-5.1%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-decrease" id="rpA-bar-0" style="left: 10.044839506822555%; width: 39.955160493177445%;"></span></div><div class="waterfall-values">value 38000</div></li><li class="waterfall-row" id="rpA-row-1"><div class="waterfall-meta"><span class="waterfall-name">Claim estimated payout</span><span class="waterfall-delta waterfall-delta-decrease" id="rpA-delta-1">-3.8%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-decrease" id="rpA-bar-1" style="left: 20.092968977384015%; width: 29.907031022615985%;"></span></div><div class="waterfall-values">value 5000.0</div></li><li class="waterfall-row" id="rpA-row-2"><div class="waterfall-meta"><span class="waterfall-name">High education</span><span class="waterfall-delta waterfall-delta-decrease" id="rpA-delta-2">-3.0%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-decrease" id="rpA-bar-2" style="left: 26.185141963472457%; width: 23.814858036527543%;"></span></div><div class="waterfall-values">value Yes</div></li><li class="waterfall-row" id="rpA-row-3"><div class="waterfall-meta"><span class="waterfall-name">Safety rating</span><span class="waterfall-delta waterfall-delta-increase" id="rpA-delta-3">+2.9%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpA-bar-3" style="left: 50%; width: 22.548951961496183%;"></span></div><div class="waterfall-values">value 75</div></li><li class="waterfall-row" id="rpA-row-4"><div class="waterfall-meta"><span class="waterfall-name">Living status</span><span class="waterfall-delta waterfall-delta-increase" id="rpA-delta-4">+1.9%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpA-bar-4" style="left: 50%; width: 15.269992030065836%;"></span></div><div class="waterfall-values">value Own</div></li><li class="waterfall-row" id="rpA-row-5"><div class="waterfall-meta"><span class="waterfall-name">Claim day of week</span><span class="waterfall-delta waterfall-delta-increase" id="rpA-delta-5">+1.4%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpA-bar-5" style="left: 50%; width: 11.31403554559282%;"></span></div><div class="waterfall-values">value Monday</div></li></ul></section></div></div>
+        <div class="rp-res" id="rp-resB"><div class="result-entrance" id="rpB-ent">
+  <div class="gauge-wrap"><div class="gauge-ring" id="rpB-gauge" style="--threshold-deg: 234deg; --gauge-deg: 0deg; --gauge-color: var(--high);"><span class="gauge-threshold-line" aria-hidden="true"></span><div class="gauge-inner"><div class="gauge-percent" id="rpB-pct">0%</div><div class="gauge-tier tier-high" id="rpB-tier">Fraud likely</div></div></div></div>
+  <div class="gauge-meta" id="rpB-meta"><span>Threshold 65%</span><span>17.0% above threshold</span></div>
+  <section class="explanation-block" id="rpB-fx"><div class="explanation-head"><span class="explanation-head-main">Feature Effects<button type="button" class="effects-info" id="rpB-fx-info" aria-label="How to read Feature Effects"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip" id="rpB-fx-tip">Baseline is the model's starting risk for a typical profile. Each bar shows how one feature moves risk up (red) or down (green) from that baseline.</span></button></span></div>
+  <div class="waterfall-summary" id="rpB-wfsum"><span>Baseline 40%</span><span>Current 82%</span></div>
+  <ul class="waterfall-list"><li class="waterfall-row" id="rpB-row-0"><div class="waterfall-meta"><span class="waterfall-name">Past number of claims</span><span class="waterfall-delta waterfall-delta-increase" id="rpB-delta-0">+19.8%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpB-bar-0" style="left: 50%; width: 18.961454208992976%;"></span></div><div class="waterfall-values">value 4</div></li><li class="waterfall-row" id="rpB-row-1"><div class="waterfall-meta"><span class="waterfall-name">Age of driver</span><span class="waterfall-delta waterfall-delta-increase" id="rpB-delta-1">+10.5%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpB-bar-1" style="left: 50%; width: 10.037288007392029%;"></span></div><div class="waterfall-values">value 45</div></li><li class="waterfall-row" id="rpB-row-2"><div class="waterfall-meta"><span class="waterfall-name">High education</span><span class="waterfall-delta waterfall-delta-increase" id="rpB-delta-2">+8.8%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpB-bar-2" style="left: 50%; width: 8.482755830338963%;"></span></div><div class="waterfall-values">value Yes</div></li><li class="waterfall-row" id="rpB-row-3"><div class="waterfall-meta"><span class="waterfall-name">Annual income</span><span class="waterfall-delta waterfall-delta-increase" id="rpB-delta-3">+5.6%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-increase" id="rpB-bar-3" style="left: 50%; width: 5.4120749867773466%;"></span></div><div class="waterfall-values">value 38000</div></li><li class="waterfall-row" id="rpB-row-4"><div class="waterfall-meta"><span class="waterfall-name">Gender</span><span class="waterfall-delta waterfall-delta-decrease" id="rpB-delta-4">-4.2%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-decrease" id="rpB-bar-4" style="left: 45.94094375991699%; width: 4.0590562400830095%;"></span></div><div class="waterfall-values">value M</div></li><li class="waterfall-row" id="rpB-row-5"><div class="waterfall-meta"><span class="waterfall-name">Safety rating</span><span class="waterfall-delta waterfall-delta-decrease" id="rpB-delta-5">-4.2%</span></div><div class="waterfall-track"><span class="waterfall-marker waterfall-marker-base" style="left: 50%;"></span><span class="waterfall-bar waterfall-decrease" id="rpB-bar-5" style="left: 45.97932727046151%; width: 4.02067272953849%;"></span></div><div class="waterfall-values">value 75</div></li></ul></section></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rp-summary-wrap"><section class="summary-panel" id="rp-sum"><div class="summary-card-head"><span class="summary-card-title">Executive Summary<button type="button" class="effects-info" aria-label="About Executive Summary"><svg class="effects-info-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4.75a.75.75 0 10-1.5 0v.5a.75.75 0 001.5 0v-.5zm0 3.5a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z" clip-rule="evenodd"></path></svg><span class="effects-tooltip">A structured summary of the claim's risk profile, key risk drivers, protective factors, and top overall contributors.</span></button></span><span class="summary-source summary-source-openai" id="rp-sum-badge">OPENAI</span></div>
+  <p class="summary-headline" id="rp-sum-head">Top local driver: Past number of claims</p>
+  <p class="summary-text" id="rp-sum-text">The claim assessment indicates a high fraud probability risk score of 81.7%, resulting in a status of &quot;fraud likely.&quot; Key factors contributing to this assessment include the claimant's age, annual income, <span class="rp-mark" id="rp-mark">history of four past claims</span>, and the absence of a witness. Further investigation is recommended given the indicators of potential fraud associated with this claim.</p>
+  <div class="summary-columns"><div class="summary-group summary-group--risk" id="rp-col-risk"><h3 id="rp-col-risk-h">Risk Drivers</h3><ul><li id="rp-risk-0">Past number of claims (4): +19.76% impact</li><li id="rp-risk-1">Age of driver (45): +10.46% impact</li><li id="rp-risk-2">High education (Yes): +8.84% impact</li></ul></div><div class="summary-group summary-group--protective" id="rp-col-prot"><h3 id="rp-col-prot-h">Protective Signals</h3><ul><li id="rp-prot-0">Gender (M): -4.23% impact</li><li id="rp-prot-1">Safety rating (75): -4.19% impact</li><li id="rp-prot-2">Claim estimated payout (5000.0): -2.17% impact</li></ul></div><div class="summary-group" id="rp-col-top"><h3 id="rp-col-top-h">Top 3 Overall</h3><ul><li id="rp-top-0">Past number of claims (4): +19.76% impact</li><li id="rp-top-1">Age of driver (45): +10.46% impact</li><li id="rp-top-2">High education (Yes): +8.84% impact</li></ul></div></div></section></div>
+</main>
+<div id="rp-cursor"><svg id="rp-cursor-art" viewBox="0 0 24 24"><path d="M5.5 2.5 L5.5 19.5 L9.6 15.6 L12.4 21.9 L15.3 20.6 L12.6 14.5 L18.4 14.5 Z" fill="#111" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div></div></body></html>
