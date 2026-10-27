@@ -105,7 +105,8 @@ const DATA = {
   B: { score: B.fraud_probability, deg: Math.round(B.fraud_probability * 360), pct: Math.round(B.fraud_probability * 100) },
 };
 
-const cursorSvg = `<svg id="rp-cursor-art" viewBox="0 0 22 30"><path d="M1.5 1.5 L1.5 24.5 L7.2 19.3 L11.0 28.0 L15.0 26.3 L11.3 17.8 L19.0 17.8 Z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+// house cursor: the 24 x 24 macOS-style arrow shared by the InsureCast and Claim Assistant films (tip at 5.5, 2.5)
+const cursorSvg = `<svg id="rp-cursor-art" viewBox="0 0 24 24"><path d="M5.5 2.5 L5.5 19.5 L9.6 15.6 L12.4 21.9 L15.3 20.6 L12.6 14.5 L18.4 14.5 Z" fill="#111" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
 
 const timeline = rd("src/app.timeline.js");
 
@@ -119,6 +120,9 @@ const FR = {
   pre: { cx: 720, cy: 643.5, s: 1.36 },   // form + empty result panel, both whole (grid 1072 x 709)
   post: { cx: 720, cy: 696.75, s: 1.18 },  // form + result, both whole and centred (grid 1072 x 815)
   sum: { cx: 720, cy: 1300.8, s: 1.6 },   // Executive Summary alone (1072 x 353)
+  // Feature Effects tooltip read: the tooltip (876-1136 x 520-598), its info icon and the section header whole at
+  // 2.2x, so the app's 10 px tooltip text reads at 22 px on screen; frame top 40 px above the tooltip
+  fx: { cx: 1046, cy: 725.5, s: 2.2 },
 };
 const scr = (f, px, py) => [960 + FR[f].s * (px - FR[f].cx), 540 + FR[f].s * (py - FR[f].cy)];
 const gauge = g("B", "#rpB-gauge"), badge = g("B", "#rp-sum-badge");
@@ -128,8 +132,8 @@ const CALLOUTS = [
   // the centred layout leaves 232 px of safe margin on the right: 28 px two-line tags that end at the safe line
   { id: "co-a", f: "post", at: gaugeR, side: "right", toX: 1562, small: true, t: [11.85, 13.95], html: "Below the 65%<br>threshold" },
   { id: "co-b", f: "post", at: gaugeR, side: "right", toX: 1562, small: true, t: [26.35, 28.55], html: "Above the 65%<br>threshold" },
-  { id: "co-top", f: "post", at: [bar0.x + bar0.w, bar0.y + bar0.h / 2], side: "right", toX: 1562, small: true, t: [35.0, 37.4], html: "Biggest push:<br>past claims" },
-  { id: "co-green", f: "post", at: [bar4.x, bar4.y + bar4.h / 2], side: "right", toX: 1562, small: true, t: [36.3, 38.15], html: "Green bars:<br>lower risk" },
+  { id: "co-top", f: "post", at: [bar0.x + bar0.w, bar0.y + bar0.h / 2], side: "right", toX: 1562, small: true, t: [35.45, 37.6], html: "Biggest push:<br>past claims" },
+  { id: "co-green", f: "post", at: [bar4.x, bar4.y + bar4.h / 2], side: "right", toX: 1562, small: true, t: [36.6, 38.15], html: "Green bars:<br>lower risk" },
   { id: "co-gpt", f: "sum", at: [badge.x + badge.w / 2, badge.y], side: "above", gap: 50, t: [41.2, 43.4], html: "Written by OpenAI GPT" },
   { id: "co-risk", f: "sum", at: [colR.x + colR.w / 2, colR.y + colR.h], side: "below", gap: 56, t: [44.75, 48.3], html: "Same top driver as the chart" },
   { id: "co-prot", f: "sum", at: [colP.x + colP.w / 2, colP.y + colP.h], side: "below", gap: 56, t: [45.9, 48.3], html: "What pulls it down" },

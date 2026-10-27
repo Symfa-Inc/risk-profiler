@@ -12,7 +12,7 @@ const ctr = (st, id, dx = 0, dy = 0) => { const b = box(st, id); return [b.x + b
 gsap.set("#rp-fx", { opacity: 1, filter: "none" });
 const camTo = (f) => ({ x: 960 - FR[f].s * FR[f].cx, y: 540 - FR[f].s * FR[f].cy, scale: FR[f].s });
 gsap.set("#rp-cam", { transformOrigin: "0 0", ...camTo("pre") });
-gsap.set("#rp-cursor", { x: 1150, y: 1090, opacity: 1, scale: 1, transformOrigin: "0 0" });
+gsap.set("#rp-cursor", { x: 1150, y: 1090, opacity: 1, scale: 1, transformOrigin: "1.5px 1.5px" });
 gsap.set("#rp-result-stack", { height: 0 });
 // rows and bars start hidden: their staggered tweens begin after the entrance (immediateRender is off)
 gsap.set("[id^=rpA-row-], [id^=rpB-row-]", { opacity: 0, y: 6 });
@@ -169,16 +169,20 @@ mountResult("B", 25.0, "post");
 callout("co-b", 26.35, 28.55);
 
 // ================= S5  31.2-38.4  what drives it =================
-curSet([1500, 1140], 29.3);
+curSet([1560, 1200], 29.3); // parked fully outside every framing (was half visible at the bottom-right edge)
 const info = ctr("B", "#rpB-fx-info", 1, 2);
+// push in on the info icon as the card leaves, so the app's 10 px tooltip reads at 22 px; the tooltip holds 1.7 s
+// with the camera still, then the camera pulls back to "post" before the chart callouts
+cam("fx", 31.25, 1.0);
 cur(info, 31.55, 0.9);
 tl.to("#rpB-fx-info", { color: "#2c3338", duration: 0.12 }, 32.5);
 tl.to("#rpB-fx-tip", { opacity: 1, duration: 0.13, ease: "power2.out" }, 32.55);
-cur([1500, 1140], 34.45, 0.9);
-tl.to("#rpB-fx-tip", { opacity: 0, duration: 0.13, ease: "power2.in" }, 34.5);
-tl.to("#rpB-fx-info", { color: "#8a96a3", duration: 0.12 }, 34.5);
-callout("co-top", 35.0, 37.4);
-callout("co-green", 36.3, 38.15);
+tl.to("#rpB-fx-tip", { opacity: 0, duration: 0.13, ease: "power2.in" }, 34.25);
+tl.to("#rpB-fx-info", { color: "#8a96a3", duration: 0.12 }, 34.25);
+cur([1560, 1200], 34.3, 0.9);
+cam("post", 34.35, 1.0);
+callout("co-top", 35.45, 37.6);
+callout("co-green", 36.6, 38.15);
 
 // ================= S6  40.8-49.2  plain English =================
 // The camera moves down to the summary behind the card. It is framed alone and whole: the panels above are

@@ -43,8 +43,10 @@
 .effects-tooltip { opacity: 0; }
 
 /* cursor (page space; hotspot at the arrow tip) */
-#rp-cursor { position: absolute; left: 0; top: 0; width: 22px; height: 30px; z-index: 50; pointer-events: none; }
-#rp-cursor-art { width: 22px; height: 30px; display: block; filter: drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.22)); }
+/* the art sits 4 px left and 1 px up so its tip (5.5, 2.5) stays on the 1.5, 1.5 hotspot the click targets use */
+#rp-cursor { position: absolute; left: 0; top: 0; width: 24px; height: 24px; z-index: 50; pointer-events: none; }
+#rp-cursor-art { position: absolute; left: -4px; top: -1px; width: 24px; height: 24px; display: block; overflow: visible;
+  filter: drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.22)); }
 
 /* callouts (screen space, true size) */
 #rp-overlay { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }

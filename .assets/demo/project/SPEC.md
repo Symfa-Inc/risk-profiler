@@ -94,3 +94,14 @@ v3: chapter transition = opaque #f8f9fb sheet whip (in from the right 0.45 s pow
 out to the left), line pre-set #dfe3e8 and inked word by word 0.09 s apart, key words -> #15436d with a 10 px
 back.out(2) lift, orange #f08526 marker (32%) sweeping under them 0.42 s; cards centred both axes. "post" framing
 centred (cx 720). Music: option 8, rhodes-guitar-warm (Lyria, 100 BPM, F major).
+
+House style alignment (2026-10-27; supersedes the times and sizes above where they differ):
+  TIME:     56.7 s x 30 = 1701 frames. End card 49.2-56.7 (7.5 s); music fades 53.1 -> 56.0, silence to 56.7.
+  POSTER:   lockup mark 90 px at ink (160, 120); headline ink left 160, first cap top 300; sub-line left 160;
+            gauge 520 px with its ink right edge at 1760, "Threshold 65%" below it (lowest ink 885).
+  31.2-38.4 push to "fx" 2.2x (31.25-32.25) on the info icon: the app's 10 px tooltip reads at 22 px, held 1.7 s;
+            pull back to "post" (34.35-35.35); callouts at 35.45 and 36.6.
+  END CARD: mark 184 x 220, DM Serif wordmark 150 px (110 px ink), 58 px gap, tagline Plex Mono 46 px #5c6d7e,
+            URL Plex Mono 36 px #1a2b3c with no rule; group ink 323-757, centred.
+  CURSOR:   24 x 24 house arrow (the InsureCast / Claim Assistant path), tip on the same hotspot.
+  RENDER:   tools/render-delivery.sh: 2x PNG capture, lanczos to 1080p, x264 CRF 14 preset slow, no tune or unsharp.
