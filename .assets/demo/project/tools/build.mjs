@@ -135,7 +135,7 @@ const CALLOUTS = [
   { id: "co-b", f: "post", at: gaugeR, side: "right", toX: 1562, small: true, t: [26.35, 28.55], html: "Above the 65%<br>threshold" },
   { id: "co-top", f: "post", at: [bar0.x + bar0.w, bar0.y + bar0.h / 2], side: "right", toX: 1562, small: true, t: [35.45, 37.6], html: "Biggest push:<br>past claims" },
   { id: "co-green", f: "post", at: [bar4.x, bar4.y + bar4.h / 2], side: "right", toX: 1562, small: true, t: [36.6, 38.15], html: "Green bars:<br>lower risk" },
-  { id: "co-gpt", f: "sum", at: [badge.x + badge.w / 2, badge.y], side: "above", gap: 50, t: [41.2, 43.4], html: "Written by OpenAI GPT" },
+  { id: "co-gpt", f: "sum", at: [badge.x + badge.w / 2, badge.y], side: "above", gap: 50, t: [41.2, 43.4], html: "Written by an OpenAI GPT model" },
   { id: "co-risk", f: "sum", at: [colR.x + colR.w / 2, colR.y + colR.h], side: "below", gap: 56, t: [44.75, 49.5], html: "Same top driver as the chart" },
   { id: "co-prot", f: "sum", at: [colP.x + colP.w / 2, colP.y + colP.h], side: "below", gap: 56, t: [45.9, 49.5], html: "What pulls it down" },
   // the third column ranks by size, whichever way each factor pushes; same baseline and gap as the other two

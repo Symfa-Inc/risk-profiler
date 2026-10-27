@@ -354,3 +354,23 @@ centre, `#rp-col-top` from `geom.json`), `side: "below"`, `gap: 56` and the same
 - Poster: the 3.0 s frame of the new 4K sequence differs from the committed `poster.png` in 19 pixels by 1 level,
   so the committed file was kept.
 - `check`: the same 3 contrast errors on the app's own colours as before, and no new findings.
+
+## OpenAI callout wording (2026-10-27) -> `../demo-risk-profiler.mp4` (overwritten); poster unchanged
+
+**Change.** `co-gpt` reads "Written by an OpenAI GPT model" (was "Written by OpenAI GPT"), set in
+`tools/build.mjs` and rebuilt into `compositions/app.html`. Style, anchor (`translate(-100%, -100%)`, right edge at
+badge centre + 40), `gap: 50`, leader and timing (41.2 -> 43.4 s) are unchanged; the box grows to the left.
+
+**Verified on the delivered file**
+- Callout at 42.5 s: one text row, box ink x 1173-1759, y 186-254, inside the 5% safe area (x 96-1824) and above
+  the summary card top (y ~258), so it covers neither the EXECUTIVE SUMMARY header nor the badge. The camera holds
+  "sum" 1.6x through the beat. OCR reads "Written by an OpenAI GPT model".
+- Box ink per frame rises monotonically 41.33-41.47 s (+6.38, +5.02, +2.99, +1.38, +0.81), holds 41.47-43.43 s with
+  jitter 0.002 on a 0-255 scale, and falls monotonically to the ground by 43.57 s: no dip.
+- Old vs new outside the callout: p99.9 frame difference <= 4 levels (encoder noise), 0 at 20, 52 and 57 s.
+- ffprobe: h264 High 1920x1080, 30/1, yuv420p, 1737 frames, 57.90 s; aac LC 48 kHz 2 ch 192 kb/s; 5.8 MB
+  (5,774,404 B); moov before mdat. x264 SEI crf=14.0.
+- Keyframes unchanged: 0, 7.0, 14.77, 16.53, 24.87, 30.97, 34.9, 40.53, 48.87, 50.40 s.
+- Audio: -16.3 LUFS, LRA 0.7 LU; -28.4 dB at 56.6 s, -42.1 dB at 57.0 s, <= -99.5 dB from 57.2 s.
+- Poster: the 3.0 s 4K frame differs from the committed `poster.png` in 135 pixels by 1 level, so it was kept.
+- `check`: the same 3 contrast errors on the app's own colours as before, and no new findings.

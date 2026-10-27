@@ -86,7 +86,7 @@ v2 SHOTS (supersede the list above where they differ):
   24.0-28.8 B mounts, pull back to "post": 82% FRAUD LIKELY; callout "Above the 65% threshold".
   31.2-38.4 "post": info-icon hover shows the app's tooltip; callouts "Biggest push: past claims", "Green bars pull
             risk down" in the free space right of the panels.
-  40.8-49.2 "sum" 1.6x, the summary alone: "Written by OpenAI GPT" above the badge; highlight on "history of four
+  40.8-49.2 "sum" 1.6x, the summary alone: "Written by an OpenAI GPT model" above the badge; highlight on "history of four
             past claims" and on the first Risk Drivers item; "Same top driver as the chart", "What pulls it down".
   49.2-57.6 end card; music fades 54.0 -> 56.8, silence to 57.6.
 
