@@ -301,3 +301,56 @@ No opacity dips.
 - The 24 px cursor box is 28 px on screen in the 1.18x "post" framing, under B4's 32 px floor. The framing is the
   owner-approved one that keeps both panels whole.
 - The poster wordmark stays DM Serif at 54 px, the display face, at about the house cap height.
+
+## Top 3 callout (2026-10-27) -> `../demo-risk-profiler.mp4` (overwritten); poster unchanged
+
+**Change.** The TOP 3 OVERALL column gets the callout the other two columns have: `co-top3`, "Strongest either
+way" (that column ranks factors by size, whichever way they push). It uses the same anchor rule (column bottom
+centre, `#rp-col-top` from `geom.json`), `side: "below"`, `gap: 56` and the same `callout()` motion.
+- Stagger kept at 1.15 s: risk 44.75, protective 45.90, top 3 47.05 s. All three now leave together at 49.5 s
+  (was 48.3 s), so the last one reads for 2.2 s.
+- That adds 1.2 s (two beats) to the summary beat, and everything after it moves by 1.2 s:
+  - app clip 49.8 -> 51.0 s; end card 49.2 -> 50.4 s (still 7.5 s); root 56.7 -> 57.9 s (1737 frames);
+  - whoosh 9 moves to 50.46 s.
+- The camera is unchanged: the "sum" 1.6x framing already holds the third column, and its callout box spans
+  x 1301-1708 and y 832-902, inside the safe area.
+- Music: the bed repeats two beats (1.19 s; the take runs at a measured 101 BPM, a 2.375 s bar) inside the
+  sustained chord at 43.9-45.1 s.
+  - The seam was chosen by search: onset-pattern correlation 0.646 and chroma 0.994 across the jump, at a quiet
+    point between notes, with a 20 ms crossfade.
+  - A first seam on the tracker's 45.135 s "beat" scored only 0.356 on onset pattern, so it was replaced.
+  - Measured against the old bed: 0-45.1 s is sample-identical, and 45.2 s to the fade is sample-identical shifted
+    by 1.19 s. The music after the seam therefore runs 10 ms ahead of the 1.2 s picture shift.
+  - The seam's largest sample step is 0.030, under the bed's 99.9th percentile of 0.041, so there is no click.
+  - The fade is 54.3 -> 57.2 s (end card +3.9 s, 2.9 s). The command is in `tools/make-bed.sh`.
+  - `beats/` was regenerated. The tracker's phase drifts between runs, so its beats are not a seam reference.
+- Render: `tools/render-delivery.sh` now passes `-force_key_frames` at the end-card start (read from
+  `index.html`). The rest of B6 is unchanged.
+
+**Verified on the delivered file**
+- ffprobe:
+  - h264 High 1920x1080, 30/1, yuv420p, 1737 frames, 57.90 s;
+  - aac LC 48 kHz, 2 ch, 192 kb/s;
+  - 5.8 MB (5,767,758 B).
+- x264 SEI: crf=14.0, ref=5, subme=8, trellis=2, rc_lookahead=50, bframes=3, direct=3; no stillimage.
+- Container: moov before mdat.
+- Keyframes: 0, 7.0, 14.77, 16.53, 24.87, 30.97, 34.9, 40.53, 48.87 and 50.40 s. There is none inside the hold.
+- Audio: -16.3 LUFS integrated, LRA 0.7 LU, peak -3.6 dBFS. The peak is -27.7 dB at 56.6 s and -42.1 dB at
+  57.0 s, then at most -99.3 dB from 57.2 s, which is 0.70 s of silence.
+- Callout boxes (mean ink of each box, per frame):
+  - each rises monotonically over 4 frames (risk 44.87-45.00, protective 46.03-46.17, top 3 47.17-47.30 s);
+  - the smallest frame-to-frame step is +0.000, so there is no dip;
+  - hold jitter is <= 0.006 on a 0-255 scale;
+  - all three fade out together over 49.57-49.67 s.
+- Alignment at 48.5 s:
+  - leaders at x 414.5 / 959.5 / 1504.5, each on its column's centre;
+  - the accent rules run y 840-893 / 841-892 / 842-891, the same box top within 1 px of antialiasing;
+  - the dots sit on one baseline at y 775.7.
+- End card at 53.2 and 57.7 s:
+  - mark 184x219, word ink 110, gap 61, lockup dH 0.0;
+  - lockup -> tagline 96; tagline dH 0.0, URL dH +0.5;
+  - group 323-757, centre 540.0.
+  - The hold over 52.9-57.9 s has a max mean frame difference of 0.0004.
+- Poster: the 3.0 s frame of the new 4K sequence differs from the committed `poster.png` in 19 pixels by 1 level,
+  so the committed file was kept.
+- `check`: the same 3 contrast errors on the app's own colours as before, and no new findings.

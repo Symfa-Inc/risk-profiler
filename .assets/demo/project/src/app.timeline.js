@@ -184,7 +184,7 @@ cam("post", 34.35, 1.0);
 callout("co-top", 35.45, 37.6);
 callout("co-green", 36.6, 38.15);
 
-// ================= S6  40.8-49.2  plain English =================
+// ================= S6  40.8-50.4  plain English =================
 // The camera moves down to the summary behind the card. It is framed alone and whole: the panels above are
 // hidden so their bottom edges do not cut into the frame (the summary itself stayed hidden until now for the
 // same reason; in the app it mounts with the result).
@@ -196,7 +196,9 @@ tl.set("#rp-summary-wrap", { opacity: 1 }, 38.9);
 callout("co-gpt", 41.2, 43.4);
 tl.fromTo("#rp-mark", { backgroundSize: "0% 72%" }, { backgroundSize: "100% 72%", duration: 0.55, ease: "power2.inOut" }, 43.6);
 tl.to("#rp-risk-0", { backgroundColor: "#fbe9e9", duration: 0.35, ease: "power2.inOut" }, 44.3);
-callout("co-risk", 44.75, 48.3);
-callout("co-prot", 45.9, 48.3);
+// the three column callouts land 1.15 s apart (risk, protective, top 3) and leave together at 49.5
+callout("co-risk", 44.75, 49.5);
+callout("co-prot", 45.9, 49.5);
+callout("co-top3", 47.05, 49.5);
 
 window.__timelines["app"] = tl;

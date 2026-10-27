@@ -127,6 +127,7 @@ const FR = {
 const scr = (f, px, py) => [960 + FR[f].s * (px - FR[f].cx), 540 + FR[f].s * (py - FR[f].cy)];
 const gauge = g("B", "#rpB-gauge"), badge = g("B", "#rp-sum-badge");
 const bar0 = g("B", "#rpB-bar-0"), bar4 = g("B", "#rpB-bar-4"), colR = g("B", "#rp-col-risk"), colP = g("B", "#rp-col-prot");
+const colT = g("B", "#rp-col-top");
 const gaugeR = [gauge.x + gauge.w, gauge.y + gauge.h / 2];
 const CALLOUTS = [
   // the centred layout leaves 232 px of safe margin on the right: 28 px two-line tags that end at the safe line
@@ -135,8 +136,10 @@ const CALLOUTS = [
   { id: "co-top", f: "post", at: [bar0.x + bar0.w, bar0.y + bar0.h / 2], side: "right", toX: 1562, small: true, t: [35.45, 37.6], html: "Biggest push:<br>past claims" },
   { id: "co-green", f: "post", at: [bar4.x, bar4.y + bar4.h / 2], side: "right", toX: 1562, small: true, t: [36.6, 38.15], html: "Green bars:<br>lower risk" },
   { id: "co-gpt", f: "sum", at: [badge.x + badge.w / 2, badge.y], side: "above", gap: 50, t: [41.2, 43.4], html: "Written by OpenAI GPT" },
-  { id: "co-risk", f: "sum", at: [colR.x + colR.w / 2, colR.y + colR.h], side: "below", gap: 56, t: [44.75, 48.3], html: "Same top driver as the chart" },
-  { id: "co-prot", f: "sum", at: [colP.x + colP.w / 2, colP.y + colP.h], side: "below", gap: 56, t: [45.9, 48.3], html: "What pulls it down" },
+  { id: "co-risk", f: "sum", at: [colR.x + colR.w / 2, colR.y + colR.h], side: "below", gap: 56, t: [44.75, 49.5], html: "Same top driver as the chart" },
+  { id: "co-prot", f: "sum", at: [colP.x + colP.w / 2, colP.y + colP.h], side: "below", gap: 56, t: [45.9, 49.5], html: "What pulls it down" },
+  // the third column ranks by size, whichever way each factor pushes; same baseline and gap as the other two
+  { id: "co-top3", f: "sum", at: [colT.x + colT.w / 2, colT.y + colT.h], side: "below", gap: 56, t: [47.05, 49.5], html: "Strongest either way" },
 ];
 let calloutHtml = "", leaderSvg = "";
 for (const c of CALLOUTS) {
@@ -151,7 +154,7 @@ for (const c of CALLOUTS) {
   calloutHtml += `<div class="rp-callout${c.small ? " rp-callout--sm" : ""}" id="${c.id}" style="${style}">${c.html}</div>`;
   leaderSvg += `<line class="rp-leader" id="${c.id}-ln" x1="${ax.toFixed(1)}" y1="${ay.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/><circle class="rp-dot" id="${c.id}-dot" cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="7"/>`;
 }
-const DUR = 49.8;
+const DUR = 51.0;
 
 const page = `<div id="rp-page">${markup}<div id="rp-cursor">${cursorSvg}</div></div>`;
 const app = `<template>

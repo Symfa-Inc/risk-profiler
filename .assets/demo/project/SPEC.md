@@ -105,3 +105,9 @@ House style alignment (2026-10-27; supersedes the times and sizes above where th
             URL Plex Mono 36 px #1a2b3c with no rule; group ink 323-757, centred.
   CURSOR:   24 x 24 house arrow (the InsureCast / Claim Assistant path), tip on the same hotspot.
   RENDER:   tools/render-delivery.sh: 2x PNG capture, lanczos to 1080p, x264 CRF 14 preset slow, no tune or unsharp.
+
+Top 3 callout (2026-10-27; supersedes the times above where they differ):
+  40.8-50.4 "sum" 1.6x: column callouts "Same top driver as the chart" 44.75, "What pulls it down" 45.9,
+            "Strongest either way" (TOP 3 OVERALL) 47.05, all out at 49.5.
+  TIME:     57.9 s x 30 = 1737 frames. End card 50.4-57.9 (7.5 s); music fades 54.3 -> 57.2, silence to 57.9; the
+            bed repeats two beats at 43.9-45.1 s to make room. Forced keyframe at 50.4.
