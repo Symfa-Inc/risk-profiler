@@ -211,3 +211,93 @@ limit; CRF 10 kept. The poster was re-taken from the 2x frame at 3.0 s.
 alignment v3 vs v4 min PSNR 31.3 dB, no shifted frame; audio unchanged (-16.3 LUFS). 2x-zoom crops of the Feature
 Effects rows (27 s) and the past-claims field (22.4 s) show darker, cleaner glyph edges and clearer red/green
 deltas. Under 10 MB, so one file serves GitHub attachments too.
+
+## House style alignment (2026-10-27) -> `../demo-risk-profiler.mp4` (overwritten), `../poster.png`
+
+Applied the cross-repo house spec (DEMO_VIDEO_AUDIT.md, sections B and C-RP). Script, copy, cards and music stay.
+
+**Changes**
+- P1 Logo on the hook and poster: `intro.html` used `#in-mark` for both the lockup logo and the orange card
+  marker, so the marker CSS and `gsap.set({scaleX: 0})` hid the logo. The marker is now `#in-hl`.
+- P1 Render: `tools/render-delivery.sh` follows spec B6 (2x PNG capture, lanczos to 1080p, x264 CRF 14 preset slow,
+  AAC 192k, +faststart; no `-tune stillimage`, no unsharp) and writes the poster from the same 4K sequence.
+- P1 Poster: frame T = 3.0 s of the 4K sequence, 3840x2160 RGB.
+- P2 End card to B2: mark 184x220, DM Serif wordmark 150 px, tagline Plex Mono 46 px #5c6d7e, URL 36 px with no
+  underline rule; clip 8.4 -> 7.5 s (root 57.6 -> 56.7 s); mark wipe 0.55-1.30 s, letters from 0.95 s, tagline
+  1.75 s, URL 2.15 s.
+- P2 Music: the approved option-8 bed refit with a fade at 53.1 s over 2.9 s, and digital silence 56.0-56.7 s.
+  The command is in the header of `tools/make-bed.sh`.
+- P2 Poster layout to B3: lockup at (160, 120), mark 90 px; headline and sub-line ink at x 160; gauge 520 px with
+  its right edge at 1760; "Threshold 65%" below it.
+- P2 Cursor: the 24x24 house arrow (IC/CA path); the art is offset so the tip keeps the old hotspot.
+- P2 Tooltip: push to "fx" 2.2x (31.25-32.25 s) on the info icon; tooltip held 1.7 s; pull back to "post"
+  (34.35-35.35 s); callouts moved to 35.45 and 36.6 s.
+- P3 Cursor parking: the cursor used to rest half visible at the bottom-right frame edge (31.2-31.5 and 35-38.4 s).
+  It now parks at page (1560, 1200), outside every framing.
+
+**Verified on the delivered file**
+
+ffprobe:
+- h264 High 1920x1080, 30/1, yuv420p, 1701 frames, 56.70 s;
+- aac LC 48 kHz, 2 ch, 192 kb/s;
+- 5.6 MB (5,598,519 B), video 0.59 Mb/s.
+
+x264 SEI:
+- crf=14.0, ref=5, subme=8, trellis=2, rc_lookahead=50, bframes=3, direct=3;
+- no stillimage tune;
+- `b_adapt=1`, which is what this x264 build reports for plain `-preset slow` too (checked on a testsrc encode).
+
+Container and audio:
+- moov before mdat (faststart);
+- loudness -16.3 LUFS integrated, LRA 0.7 LU, peak -3.6 dBFS;
+- music audible from 0.1 s, fade 53.1 -> 56.0 s (0.5 s RMS -16, -20, -26, -33, -49 dB), digital silence for the
+  last 0.70 s.
+
+Poster: `PNG image data, 3840 x 2160, 8-bit/color RGB`; logo present. Ink on the half-scale copy:
+- lockup x 160, top 120, height 90;
+- headline x 159, first cap top 300; sub-line x 160;
+- right edge 1760 (R 160);
+- lowest ink 885.
+Frame 0 shows the same layout, with "35% safe?" before the sweep.
+
+End card (`endcard.py`, at 52.0 and 56.5 s):
+
+| Measure | Value |
+|---|---|
+| Mark | 184x219 |
+| Wordmark ink height | 110 |
+| Mark -> word gap | 61 |
+| Lockup dH | 0.0 |
+| Lockup -> tagline | 96 |
+| Tagline baseline -> URL top | 50 |
+| Tagline dH | 0.0 |
+| URL dH | +0.5 |
+| Group | 323-757, centre 540.0 (frame 539.5) |
+
+The last moving frame is at 51.53 s (+2.33 s); the card holds dead still for 5.17 s.
+
+Interstitials (glyph ink, cap to baseline):
+- "Start with one claim" dx +1.0 / dy 0.0;
+- "Then two facts change" 0.0 / 0.0;
+- "See what drives the score" +0.5 / +0.5;
+- "Read it in plain English" +1.0 / 0.0.
+
+Tooltip at 33.0 s: 22 px text, cap/ascender to baseline 16 px; the tooltip, icon and "Feature Effects" header are
+whole and crisp in the 100% crop.
+
+Clicks at 9.1, 17.95, 19.35, 21.15 and 23.7 s, and the hover at 32.55 s: the tip is on the control.
+
+`blink.py` (5-level threshold) reports the same 5 hits as the pre-change v4 file. Its one new hit (1.07 s) is the
+gauge numerals counting 35 -> 40%, not an opacity change. All hits were inspected:
+- 5.63, 15.27, 29.67 and 39.33 s: card words inking and lifting;
+- 23.07 s: the typed caret.
+No opacity dips.
+
+`check`: 0 errors except the 3 known contrast findings on the app's own colours (see v3).
+
+**Spec deviations, kept on purpose**
+- B5.2 asks for 24 px tooltip text, which would need 2.4x, beyond the 1.3-2.2x push range. The fix list's target
+  (font >= 20 px, cap >= 14 px) is met at 2.2x.
+- The 24 px cursor box is 28 px on screen in the 1.18x "post" framing, under B4's 32 px floor. The framing is the
+  owner-approved one that keeps both panels whole.
+- The poster wordmark stays DM Serif at 54 px, the display face, at about the house cap height.
