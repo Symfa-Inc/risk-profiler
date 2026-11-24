@@ -20,7 +20,7 @@ Machine learning prototype for profiling risk in insurance claims using AutoGluo
 
 ## Preview
 
-https://github.com/user-attachments/assets/79f3bf10-3dd2-4ca9-8b5c-b3c0fb95070c
+https://github.com/user-attachments/assets/aa03b1d2-757d-479d-b400-6300832b8295
 
 ## Features
 
